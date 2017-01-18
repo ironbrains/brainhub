@@ -47,14 +47,23 @@ var config = module.exports = {
         loader: 'babel',
         query: {
           cacheDirectory: true,
-          plugins: ['transform-decorators-legacy'],
-          presets: ['react', 'es2015', 'stage-2', 'stage-0'],
+          plugins: [],
+          presets: ['es2015', 'angular2'],
         },
       },
       {
         test: /\.sass$/,
         loader: ExtractTextPlugin.extract('style', 'css!sass?indentedSyntax&includePaths[]=' + __dirname +  '/node_modules'),
       },
+      { 
+        test: /\.html$/, 
+        loader: 'html-loader',
+        exclude: /\.async\.(html|css)$/
+      },
+      {
+        test: /\.async\.(html|css)$/, 
+        loaders: ['file?name=[name].[hash].[ext]', 'extract']
+      }
     ],
   },
 
