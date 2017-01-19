@@ -18,7 +18,7 @@ var config = module.exports = {
   // css and js
   entry: {
     application: [
-      web('css/application.sass'),
+      web('css/application.scss'),
       web('js/application.js'),
     ],
   },
@@ -30,7 +30,7 @@ var config = module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.sass'],
+    extensions: ['', '.js', '.scss'],
     modulesDirectories: ['node_modules'],
   },
 
@@ -55,6 +55,10 @@ var config = module.exports = {
         test: /\.sass$/,
         loader: ExtractTextPlugin.extract('style', 'css!sass?indentedSyntax&includePaths[]=' + __dirname +  '/node_modules'),
       },
+      {
+        test: /\.scss$/,
+        loaders: ['style-loader', 'css-loader', 'sass-loader']
+      },
       { 
         test: /\.html$/, 
         loader: 'html-loader',
@@ -63,6 +67,10 @@ var config = module.exports = {
       {
         test: /\.async\.(html|css)$/, 
         loaders: ['file?name=[name].[hash].[ext]', 'extract']
+      },
+      {
+        test: /\.html\.(slm|slim)$/,
+        loader: 'html!slm'
       }
     ],
   },

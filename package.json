@@ -21,6 +21,8 @@
     "html-loader": "^0.4.4",
     "node-sass": "^4.3.0",
     "sass-loader": "^4.1.1",
+    "slm": "^0.6.0",
+    "slm-loader": "^0.2.3",
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0"
   },
