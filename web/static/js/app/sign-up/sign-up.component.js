@@ -1,29 +1,39 @@
 import { Component }     from '@angular/core';
-import { SignUpService } from './sign-up.service';
+import { UserService } from '../users/user.service';
 
 @Component({
   selector: 'sign-up',
   template: require('./sign-up.component.html.slim'),
-  providers: [SignUpService]
+  providers: [UserService]
 })
 
 export class SignUpComponent {
   static get parameters() {
-    return [[SignUpService]];
+    return [[UserService]];
   }
 
-  constructor(signUpService) {
+  constructor(userService) {
     this.user = {};
-    this.signUpService = signUpService;
+    this.userService = userService;
   }
 
   submit() {
-    this.signUpService.submit(this.user).subscribe(
-      user => {
-        localStorage.setItem('user', JSON.stringify(user.user));
-        localStorage.setItem('jwt', user.jwt);
-      },
-      error => console.log('error', error)
+    this.loadingStart();
+
+    this.userService.registration(this.user).subscribe(
+      status => this.loadingStop(),
+      error => {
+        console.log('error', error);
+        this.loadingStop();
+      }
     );
+  }
+
+  loadingStart() {
+    this.loading = true;
+  }
+
+  loadingStop() {
+    this.loading = false;
   }
 };
