@@ -2,12 +2,12 @@ import { Component }     from '@angular/core';
 import { UserService } from '../users/user.service';
 
 @Component({
-  selector: 'sign-up',
-  template: require('./sign-up.component.html.slim'),
+  selector: 'registration',
+  template: require('./registration.component.html.slim'),
   providers: [UserService]
 })
 
-export class SignUpComponent {
+export class RegistrationComponent {
   static get parameters() {
     return [[UserService]];
   }
