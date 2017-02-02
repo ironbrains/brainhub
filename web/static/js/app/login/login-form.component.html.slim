@@ -1,0 +1,12 @@
+.form-box
+  <div class="loading" [hidden]="!loading">
+    p Loading...
+  </div>
+  h1.text-center Login
+  form
+    .form-group
+      <input class="form-control" type="email" placeholder="Email" [(ngModel)]="user.email" name="email" />
+    .form-group
+      <input class="form-control" type="password" placeholder="Password" [(ngModel)]="user.password" name="password" />
+    .form-group
+      <button class="btn btn-primary" type="submit" (click)="submit()"> Sign Up </button>

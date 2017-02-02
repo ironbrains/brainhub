@@ -6,9 +6,12 @@ import { FormsModule }   from '@angular/forms'
 import { HttpModule }    from '@angular/http';
 import { RouterModule }  from '@angular/router';
 
-import { AppComponent }          from './app.component';
-import { IndexComponent }        from './static-pages/index.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { AppComponent }              from './app.component';
+import { IndexComponent }            from './static-pages/index.component';
+import { RegistrationComponent }     from './registration/registration.component';
+import { RegistrationFormComponent } from './registration/registration-form.component';
+import { LoginComponent }            from './login/login.component';
+import { LoginFormComponent }        from './login/login-form.component';
 
 import { routes } from './app.routes'
 
@@ -16,7 +19,10 @@ import { routes } from './app.routes'
   declarations: [
     AppComponent,
     IndexComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    RegistrationFormComponent,
+    LoginComponent,
+    LoginFormComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
