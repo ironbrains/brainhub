@@ -31,8 +31,33 @@ export class UserService {
             .map(res => {
                 localStorage.setItem('user', JSON.stringify(res.user));
                 localStorage.setItem('jwt', res.jwt);
-                true
+
+                return res
             });
+  }
+
+  login(user) {
+    var headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    var creds = JSON.stringify({ session: user })
+    return this.http
+            .post('/api/v1/sessions/', creds, { headers })
+            .map(res => res.json())
+            .map(res => {
+                localStorage.setItem('user', JSON.stringify(res.user));
+                localStorage.setItem('jwt', res.jwt);
+
+                return res
+            });
+  }
+
+  logout() {
+    localStorage.removeItem('jwt');
+    localStorage.removeItem('user');
+  }
+
+  isLoggedIn() {
+    return !!localStorage.getItem('jwt');
   }
 
   currentUser() {

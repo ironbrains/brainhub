@@ -1,10 +1,10 @@
-import { Component }     from '@angular/core';
+import { Component }   from '@angular/core';
 import { UserService } from '../users/user.service';
 
 @Component({
   selector: 'registration-form',
   template: require('./registration-form.component.html.slim'),
-  providers: [UserService]
+  providers: []
 })
 
 export class RegistrationFormComponent {

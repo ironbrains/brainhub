@@ -12,6 +12,10 @@ import { RegistrationComponent }     from './registration/registration.component
 import { RegistrationFormComponent } from './registration/registration-form.component';
 import { LoginComponent }            from './login/login.component';
 import { LoginFormComponent }        from './login/login-form.component';
+import { UserProfileComponent }      from './users/user-profile.component';
+import { UserService }               from './users/user.service'
+import { LoginGuard }                from './login/login.guard'
+import { LoggedInGuard }             from './login/logged-in.guard'
 
 import { routes } from './app.routes'
 
@@ -22,7 +26,8 @@ import { routes } from './app.routes'
     RegistrationComponent,
     RegistrationFormComponent,
     LoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    UserProfileComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -30,7 +35,11 @@ import { routes } from './app.routes'
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+    LoginGuard,
+    LoggedInGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
