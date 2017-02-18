@@ -8,6 +8,7 @@ import { RouterModule }  from '@angular/router';
 
 import { AppComponent }              from './app.component';
 import { IndexComponent }            from './static-pages/index.component';
+import { PageNotFoundComponent }     from './static-pages/page-not-found.component';
 import { RegistrationComponent }     from './registration/registration.component';
 import { RegistrationFormComponent } from './registration/registration-form.component';
 import { LoginComponent }            from './login/login.component';
@@ -26,6 +27,7 @@ import { routes } from './app.routes'
   declarations: [
     AppComponent,
     IndexComponent,
+    PageNotFoundComponent,
     RegistrationComponent,
     RegistrationFormComponent,
     LoginComponent,

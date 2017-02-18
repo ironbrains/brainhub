@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent }           from './app.component';
 import { IndexComponent }         from './static-pages/index.component';
+import { PageNotFoundComponent }  from './static-pages/page-not-found.component';
 import { RegistrationComponent }  from './registration/registration.component';
 import { LoginComponent }         from './login/login.component';
 import { UserProfileComponent }   from './users/user-profile.component';
@@ -15,5 +16,5 @@ export const routes = [
   { path: 'login',        component: LoginComponent, canActivate: [LoggedInGuard] },
   { path: 'profile',      component: UserProfileComponent, canActivate: [LoginGuard] },
   { path: 'dashboard',    component: UserDashboardComponent, canActivate: [LoginGuard] },
-  { path: '**',           component: RegistrationComponent }
+  { path: '**',           component: PageNotFoundComponent }
 ];
