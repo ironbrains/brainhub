@@ -1,5 +1,4 @@
 #dashboard {
-  background: #f5f5f5;
   padding-top: 16px;
   min-height: 100vh;
 }
@@ -20,6 +19,8 @@
       display: block;
       line-height: 32px;
       margin-bottom: 8px;
+      font-size: 24px;
+      font-weight: 300;
     }
   }
 }

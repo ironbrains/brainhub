@@ -1,5 +1,5 @@
-import { Component }     from '@angular/core';
-import { Router }        from '@angular/router';
+import { Component }   from '@angular/core';
+import { Router }      from '@angular/router';
 import { UserService } from '../users/user.service';
 
 @Component({
@@ -17,9 +17,6 @@ export class LoginFormComponent {
     this.user = {};
     this.userService = userService;
     this.router = router;
-    if (this.userService.isLoggedIn()) {
-      this.router.navigate(['']);
-    }
   }
 
   submit() {
@@ -28,6 +25,7 @@ export class LoginFormComponent {
     this.userService.login(this.user).subscribe(
       status => {
         this.loadingStop();
+        this.router.navigate(['/dashboard']);
       },
       error => {
         console.log('error', error);
