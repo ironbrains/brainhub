@@ -13,6 +13,9 @@ import { RegistrationFormComponent } from './registration/registration-form.comp
 import { LoginComponent }            from './login/login.component';
 import { LoginFormComponent }        from './login/login-form.component';
 import { UserProfileComponent }      from './users/user-profile.component';
+import { UserDashboardComponent }    from './users/user-dashboard.component';
+import { NavbarComponent }           from './shared/navbar.component'
+
 import { UserService }               from './users/user.service'
 import { LoginGuard }                from './login/login.guard'
 import { LoggedInGuard }             from './login/logged-in.guard'
@@ -27,7 +30,9 @@ import { routes } from './app.routes'
     RegistrationFormComponent,
     LoginComponent,
     LoginFormComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UserDashboardComponent,
+    NavbarComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
