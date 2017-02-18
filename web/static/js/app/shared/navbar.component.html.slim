@@ -1,6 +1,10 @@
-nav.nav.flex-column
-  a.nav-link.active href="#" Active
-  a.nav-link href="#" Link
-  a.nav-link href="#" Link
-  .footer.center
-    | {{user.first_name}} {{user.last_name}}
+.left-nav
+  nav.nav.flex-column
+    .header
+      h2 Brainhub
+    a.nav-link.active href="#" Active
+    a.nav-link href="#" Link
+    a.nav-link href="#" Link
+    .footer
+      span {{user.first_name}} {{user.last_name}}
+      <span class="clickable" (click)="logout()">Logout</span>

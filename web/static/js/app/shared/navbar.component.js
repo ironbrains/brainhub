@@ -1,4 +1,5 @@
 import { Component }   from '@angular/core';
+import { Router }      from '@angular/router';
 import { UserService } from '../users/user.service';
 
 @Component({
@@ -7,11 +8,18 @@ import { UserService } from '../users/user.service';
 })
 export class NavbarComponent {
   static get parameters() {
-    return [[UserService]];
+    return [[UserService], [Router]];
   }
 
-  constructor(userService) {
+  constructor(userService, router) {
     this.userService = userService;
+    this.router = router;
     this.user = userService.currentUser();
+  }
+
+  logout() {
+    console.log('logout');
+    this.userService.logout();
+    this.router.navigate(['/']);
   }
 };
