@@ -1,6 +1,29 @@
 .row
-  .col-md-12
-    h1 Profile
+  .col-md-6
+    h1 My Profile
+  .col-md-6.align-right
+    .btn.btn-primary Save
+.row
+  .col-md-3
+  .col-md-9
     .material-card
       .card-content
-        span.card-title Hello {{user.first_name}} {{user.last_name}}
+        span.card-title Personal
+        form
+          .form-group.row
+            label.col-2.col-form-label for="firstName" First name
+            .col-10
+              <input class="form-control" type="text" [(ngModel)]="user.first_name" id="first_name" name="first_name">
+          .form-group.row
+            label.col-2.col-form-label for="lastName" Last name
+            .col-10
+              <input class="form-control" type="text" [(ngModel)]="user.last_name" id="last_name" name="last_name">
+
+    .material-card
+      .card-content
+        span.card-title Other
+        form
+          .form-group.row
+            label.col-2.col-form-label for="firstName" Email
+            .col-10
+              <input class="form-control" type="text" [(ngModel)]="user.email" id="email" name="email">

@@ -4,8 +4,9 @@ nav.nav {
 
   a.nav-link {
     color: #cecece;
-    .active {
+    &.active {
       color: #fff;
+      background: #121212;
     }
   }
 
@@ -75,4 +76,16 @@ nav.nav {
       font-weight: 300;
     }
   }
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
 }

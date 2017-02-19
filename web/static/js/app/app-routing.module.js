@@ -18,11 +18,11 @@ export const appRoutes = [
   { path: 'registration', component: RegistrationComponent, canActivate: [LoggedInGuard] },
   { path: 'login',        component: LoginComponent, canActivate: [LoggedInGuard] },
   {
-    path: 'dashboard',
+    path: 'app',
     canActivate: [LoginGuard],
     component: DashboardComponent,
     children: [
-      { path: '', component: IndexDashboardComponent },
+      { path: 'dashboard', component: IndexDashboardComponent },
       { path: 'profile', component: UserProfileComponent }
     ]
     
