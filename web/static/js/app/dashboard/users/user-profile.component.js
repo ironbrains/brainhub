@@ -1,12 +1,12 @@
 import { Component }   from '@angular/core';
-import { UserService } from '../users/user.service';
+import { UserService } from '../../users/user.service';
 
 @Component({
-  selector: 'user-dashboard',
-  template: require('./user-dashboard.component.html.slim'),
+  selector: 'user-profile',
+  template: require('./user-profile.component.html.slim'),
   providers: []
 })
-export class UserDashboardComponent {
+export class UserProfileComponent {
   static get parameters() {
     return [[UserService]];
   }

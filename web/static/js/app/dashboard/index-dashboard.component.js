@@ -2,11 +2,11 @@ import { Component }   from '@angular/core';
 import { UserService } from '../users/user.service';
 
 @Component({
-  selector: 'user-profile',
-  template: require('./user-profile.component.html.slim'),
+  selector: 'index-dashboard',
+  template: require('./index-dashboard.component.html.slim'),
   providers: []
 })
-export class UserProfileComponent {
+export class IndexDashboardComponent {
   static get parameters() {
     return [[UserService]];
   }
