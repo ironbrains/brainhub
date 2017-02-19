@@ -19,6 +19,7 @@ import { NavbarComponent }           from './shared/navbar.component'
 import { DashboardComponent }        from './dashboard/dashboard.component';
 import { IndexDashboardComponent }   from './dashboard/index-dashboard.component';
 import { UserProfileComponent }      from './dashboard/users/user-profile.component';
+import { ProjectsComponent }         from './dashboard/projects/projects.component';
 
 import { UserService }               from './users/user.service'
 import { LoginGuard }                from './login/login.guard'
@@ -37,6 +38,7 @@ import { LoggedInGuard }             from './login/logged-in.guard'
     DashboardComponent,
     IndexDashboardComponent,
     UserProfileComponent,
+    ProjectsComponent,
 
     NavbarComponent
   ],
