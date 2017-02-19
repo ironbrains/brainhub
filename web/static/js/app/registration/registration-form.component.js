@@ -25,7 +25,7 @@ export class RegistrationFormComponent {
     this.userService.registration(this.user).subscribe(
       status => {
         this.loadingStop();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/app/dashboard']);
       },
       error => {
         console.log('error', error);

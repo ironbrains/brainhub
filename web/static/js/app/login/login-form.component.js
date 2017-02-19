@@ -25,7 +25,7 @@ export class LoginFormComponent {
     this.userService.login(this.user).subscribe(
       status => {
         this.loadingStop();
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/app/dashboard']);
       },
       error => {
         console.log('error', error);
