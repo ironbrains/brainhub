@@ -14,13 +14,8 @@ import { RegistrationComponent }     from './registration/registration.component
 import { RegistrationFormComponent } from './registration/registration-form.component';
 import { LoginComponent }            from './login/login.component';
 import { LoginFormComponent }        from './login/login-form.component';
-import { NavbarComponent }           from './shared/navbar.component'
 
-import { DashboardComponent }        from './dashboard/dashboard.component';
-import { IndexDashboardComponent }   from './dashboard/index-dashboard.component';
-import { UserProfileComponent }      from './dashboard/users/user-profile.component';
-import { ProjectsComponent }         from './dashboard/projects/projects.component';
-import { ProjectForm }               from './dashboard/projects/form.component';
+import { DashboardModule }        from './dashboard/dashboard.module';
 
 import { UserService }               from './users/user.service'
 
@@ -32,20 +27,13 @@ import { UserService }               from './users/user.service'
     RegistrationComponent,
     RegistrationFormComponent,
     LoginComponent,
-    LoginFormComponent,
-
-    DashboardComponent,
-    IndexDashboardComponent,
-    UserProfileComponent,
-    ProjectsComponent,
-    ProjectForm,
-
-    NavbarComponent
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    DashboardModule,
     AppRoutingModule
   ],
   providers: [
