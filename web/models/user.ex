@@ -10,6 +10,8 @@ defmodule Brainhub.User do
     field :encrypted_password, :string
     field :password,           :string, virtual: true
 
+    has_many :created_projects, Brainhub.Project, foreign_key: :creator_id
+
     timestamps()
   end
 

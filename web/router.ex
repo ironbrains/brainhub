@@ -15,12 +15,6 @@ defmodule Brainhub.Router do
     plug Guardian.Plug.LoadResource
   end
 
-  scope "/", Brainhub do
-    pipe_through :browser # Use the default browser stack
-
-    get "*path", PageController, :index
-  end
-
   scope "/api", Brainhub do
     pipe_through :api
 
@@ -29,6 +23,14 @@ defmodule Brainhub.Router do
 
       post   "/sessions", SessionController, :create
       delete "/sessions", SessionController, :delete
+
+      resources "/projects", ProjectController, except: [:new, :edit]
     end
   end
+
+  scope "/", Brainhub do
+      pipe_through :browser # Use the default browser stack
+
+      get "/*path", PageController, :index
+    end
 end

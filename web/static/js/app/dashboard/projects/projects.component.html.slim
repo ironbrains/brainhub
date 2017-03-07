@@ -2,5 +2,22 @@
   .col-md-12
     h1 Projects
 .row
-  .col-md-12
-    | Here would be projects list
+  .col-md-12.col-lg-10
+    project-form
+.row
+  .col-md-12.col-lg-10
+    .material-card
+      .card-content
+        table.table
+          thead
+            tr
+              th #
+              th Name
+              th Description
+          tbody
+            tr *ngFor="let project of projects" bind-hidden="loading"
+              th {{project.id}}
+              td {{project.name}}
+              td {{project.description}}
+        .loader bind-hidden="!loading"
+          .spinner
