@@ -7,6 +7,7 @@ import { DashboardComponent }      from './dashboard.component';
 import { IndexDashboardComponent } from './index-dashboard.component';
 import { UserProfileComponent }    from './users/user-profile.component';
 import { ProjectsComponent }       from './projects/projects.component';
+import { NewProjectComponent }     from './projects/new-project.component';
 
 const dashboardRoutes = [
   {
@@ -16,7 +17,13 @@ const dashboardRoutes = [
     children: [
       { path: 'dashboard', component: IndexDashboardComponent },
       { path: 'profile', component: UserProfileComponent },
-      { path: 'projects', component: ProjectsComponent }
+      {
+        path: 'projects',
+        children: [
+          { path: '',    component: ProjectsComponent },
+          { path: 'new', component: NewProjectComponent }
+        ]
+      }
     ]
 
   }

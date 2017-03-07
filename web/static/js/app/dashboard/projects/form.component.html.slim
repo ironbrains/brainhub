@@ -1,12 +1,4 @@
-.material-card
-  <div class="loading" [hidden]="!loading">
-    .outer-wrapper
-      .valign
-        .spinner
-  </div>
-  .card-content
-    span.card-title.text-center Create Project
-    form.form-inline
-      <input class="form-control mb-2 mr-sm-2 mb-sm-0" type="text" placeholder="Project Name" [(ngModel)]="project.name" name="name" />
-      <input class="form-control mb-2 mr-sm-2 mb-sm-0" type="text" placeholder="Description" [(ngModel)]="project.description" name="description" />
-      button.btn.btn-primary type="submit" on-click="submit()" Submit
+form.form-inline
+  <input class="form-control mb-2 mr-sm-2 mb-sm-0" type="text" placeholder="Project Name" [(ngModel)]="project.name" name="name" />
+  <input class="form-control mb-2 mr-sm-2 mb-sm-0" type="text" placeholder="Description" [(ngModel)]="project.description" name="description" />
+  button.btn.btn-primary type="submit" Submit
