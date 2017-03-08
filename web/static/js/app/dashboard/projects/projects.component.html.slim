@@ -7,14 +7,14 @@
   .col-md-12.col-lg-10
     .material-card
       .card-content
-        table.table
+        table.table.table-hover
           thead
             tr
               th #
               th Name
               th Description
           tbody
-            tr *ngFor="let project of projects" bind-hidden="loading"
+            tr *ngFor="let project of projects" bind-hidden="loading" on-click="redirectTo(project)"
               th {{project.id}}
               td {{project.name}}
               td {{project.description}}

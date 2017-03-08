@@ -4,7 +4,10 @@ defmodule Brainhub.Project do
   schema "projects" do
     field :name, :string
     field :description, :string
+
     belongs_to :creator, Brainhub.User
+
+    has_many :teams, Brainhub.Team
 
     timestamps()
   end

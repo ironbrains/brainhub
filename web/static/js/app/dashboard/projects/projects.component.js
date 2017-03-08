@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { ProjectService } from './project.service'
 
 @Component({
@@ -8,10 +9,11 @@ import { ProjectService } from './project.service'
 })
 export class ProjectsComponent {
   static get parameters() {
-    return [[ProjectService]];
+    return [[Router], [ProjectService]];
   }
 
-  constructor(projectService) {
+  constructor(router, projectService) {
+    this.router = router;
     this.projectService = projectService;
     this.loading = true;
     this.getProjects();
@@ -28,5 +30,9 @@ export class ProjectsComponent {
         this.loading = false;
       }
     )
+  }
+
+  redirectTo(project) {
+    this.router.navigate(['app/projects', project.id]);
   }
 };

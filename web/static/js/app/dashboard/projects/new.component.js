@@ -4,7 +4,7 @@ import { ProjectService } from './project.service'
 
 @Component({
   selector: 'new-project',
-  template: require('./new-project.component.html.slim'),
+  template: require('./new.component.html.slim'),
   providers: [ProjectService]
 })
 export class NewProjectComponent {

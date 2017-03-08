@@ -32,6 +32,7 @@ defmodule Brainhub.ProjectController do
 
   def show(conn, %{"id" => id}) do
     project = Repo.get!(Project, id)
+      |> Repo.preload(:teams)
     render(conn, "show.json", project: project)
   end
 
@@ -41,7 +42,7 @@ defmodule Brainhub.ProjectController do
 
     case Repo.update(changeset) do
       {:ok, project} ->
-        render(conn, "show.json", project: project)
+        render conn, "show.json", project: Repo.preload(project, :teams)
       {:error, changeset} ->
         conn
         |> put_status(:unprocessable_entity)

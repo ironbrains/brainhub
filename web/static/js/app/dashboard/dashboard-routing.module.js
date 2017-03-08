@@ -7,7 +7,9 @@ import { DashboardComponent }      from './dashboard.component';
 import { IndexDashboardComponent } from './index-dashboard.component';
 import { UserProfileComponent }    from './users/user-profile.component';
 import { ProjectsComponent }       from './projects/projects.component';
-import { NewProjectComponent }     from './projects/new-project.component';
+import { ShowProjectComponent }    from './projects/show.component';
+import { EditProjectComponent }    from './projects/edit.component';
+import { NewProjectComponent }     from './projects/new.component';
 
 const dashboardRoutes = [
   {
@@ -21,7 +23,9 @@ const dashboardRoutes = [
         path: 'projects',
         children: [
           { path: '',    component: ProjectsComponent },
-          { path: 'new', component: NewProjectComponent }
+          { path: 'new', component: NewProjectComponent },
+          { path: ':id/edit', component: EditProjectComponent },
+          { path: ':id', component: ShowProjectComponent }
         ]
       }
     ]

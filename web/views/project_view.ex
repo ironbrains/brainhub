@@ -6,7 +6,7 @@ defmodule Brainhub.ProjectView do
   end
 
   def render("show.json", %{project: project}) do
-    %{data: render_one(project, Brainhub.ProjectView, "project.json")}
+    %{id: project.id, name: project.name, description: project.description, teams: render_many(project.teams, Brainhub.TeamView, "team.json")}
   end
 
   def render("project.json", %{project: project}) do
