@@ -21,7 +21,7 @@ export class ProjectService {
             .map(res => res.json());
   }
 
-  get(id) {
+  show(id) {
     id = (id instanceof Object) ? id.id : id;
     var headers = new Headers();
     this.setHeaders(headers);
@@ -36,6 +36,15 @@ export class ProjectService {
     var creds = JSON.stringify({ project: project });
     return this.http
             .post('/api/v1/projects/', creds, { headers: headers })
+            .map(res => res.json());
+  }
+
+  edit(id) {
+    id = (id instanceof Object) ? id.id : id;
+    var headers = new Headers();
+    this.setHeaders(headers);
+    return this.http
+            .get('/api/v1/projects/' + id + '/edit', { headers: headers })
             .map(res => res.json());
   }
 

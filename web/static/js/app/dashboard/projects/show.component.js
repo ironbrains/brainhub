@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectService } from './project.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'show-project',
@@ -9,15 +10,17 @@ import { ProjectService } from './project.service';
 })
 export class ShowProjectComponent implements OnInit, OnDestroy {
   static get parameters() {
-    return [[Router], [ActivatedRoute], [ProjectService]];
+    return [[Router], [ActivatedRoute], [ProjectService], [Location]];
   }
 
-  constructor(router, route, projectService) {
+  constructor(router, route, projectService, location, gettingMethod = 'show') {
     this.router = router;
     this.route = route;
     this.projectService = projectService;
+    this.location = location;
     this.project = {};
     this.loading = true;
+    this.gettingMethod = gettingMethod;
   }
 
   destroy() {
@@ -39,7 +42,7 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
     this.sub = this.route.params
       .subscribe(params => {
         this.id = +params.id;
-        this.projectService.get(this.id).subscribe(
+        this.projectService[this.gettingMethod](this.id).subscribe(
           success => {
             this.project = success;
             this.loading = false;
@@ -47,9 +50,14 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
           error => {
             console.log(error);
             this.loading = false;
+            this.location.back();
           }
         )
       });
+  }
+
+  isEditable() {
+    return this.project.creator_id == JSON.parse(localStorage.getItem('user')).id
   }
 
   ngOnDestroy() {

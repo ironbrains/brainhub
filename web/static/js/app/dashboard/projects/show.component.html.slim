@@ -1,7 +1,7 @@
 .row
   .col-md-6
     h1 {{project.name}}
-  .col-md-6.align-right
+  .col-md-6.align-right *ngIf="isEditable()"
     a.btn.btn-success routerLink="./edit" role="button" Edit Project
 .row
   .col-md-4
@@ -17,6 +17,6 @@
         p *ngFor="let team of project.teams" bind-hidden="loading"
           | {{team.name}}
         p.align-center bind-hidden="project.teams && project.teams.length > 0" This project has no team
-.row
+.row *ngIf="isEditable()"
   .col-md-12.align-right
     button.btn.btn-danger on-click="destroy()" Delete Project
