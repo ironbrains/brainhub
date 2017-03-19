@@ -11,10 +11,26 @@ defmodule Brainhub.Factory do
   end
 
   def project_factory do
-      %Brainhub.Project{
-        name: "Project",
-        description: "description",
-        creator: build(:user)
-      }
-    end
+    %Brainhub.Project{
+      name: "Project",
+      description: "description",
+      creator: build(:user),
+      company: build(:company)
+    }
+  end
+
+  def company_factory do
+    %Brainhub.Company{
+      name: "Company name",
+      web_site: "company_name.com"
+    }
+  end
+
+  def employment_factory do
+    %Brainhub.Employment{
+      user: build(:user),
+      company: build(:company),
+      role: "admin"
+    }
+  end
 end

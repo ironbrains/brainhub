@@ -1,5 +1,6 @@
 defmodule Brainhub.ProjectController do
   use Brainhub.Web, :controller
+  import Brainhub.Authentication
 
   plug Guardian.Plug.EnsureAuthenticated, handler: Brainhub.SessionController
   plug :current_user
@@ -12,8 +13,6 @@ defmodule Brainhub.ProjectController do
                                           conn.params,
                                           conn.assigns.current_user])
   end
-
-
 
   def index(conn, _params, user) do
     projects = user
@@ -74,10 +73,6 @@ defmodule Brainhub.ProjectController do
     Repo.delete!(project)
 
     send_resp(conn, :no_content, "")
-  end
-
-  defp current_user(conn, _) do
-    assign conn, :current_user, Guardian.Plug.current_resource(conn)
   end
 
   defp verify_creator(conn, _) do

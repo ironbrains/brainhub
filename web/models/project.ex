@@ -6,6 +6,7 @@ defmodule Brainhub.Project do
     field :description, :string
 
     belongs_to :creator, Brainhub.User
+    belongs_to :company, Brainhub.Company
 
     has_many :teams, Brainhub.Team
 

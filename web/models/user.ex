@@ -11,6 +11,7 @@ defmodule Brainhub.User do
     field :password,           :string, virtual: true
 
     has_many :created_projects, Brainhub.Project, foreign_key: :creator_id
+    has_many :employments, Brainhub.Employment
 
     timestamps()
   end
