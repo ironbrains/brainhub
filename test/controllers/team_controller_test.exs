@@ -4,6 +4,7 @@ defmodule Brainhub.TeamControllerTest do
   import Brainhub.Factory
 
   alias Brainhub.Team
+  alias Brainhub.AuthCase
 
   @valid_attrs %{name: "Team name", project_id: nil}
 
@@ -12,8 +13,7 @@ defmodule Brainhub.TeamControllerTest do
     company = insert :company
     _employment = insert :employment, user: user, company: company
     conn = put_req_header(conn, "accept", "application/json")
-    {:ok, jwt, _} = Guardian.encode_and_sign(user)
-    {:ok, conn: conn, auth_conn: put_req_header(conn, "authorization", jwt), user: user, company: company}
+    AuthCase.sign_in(conn, user) |> AuthCase.merge({:ok, company: company})
   end
 
   describe "create/3" do

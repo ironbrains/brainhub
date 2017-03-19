@@ -21,4 +21,11 @@ defmodule Brainhub.Company do
     |> cast(params, [:name, :web_site])
     |> validate_required([:name, :web_site])
   end
+
+  def employer?(company_id, user_id) do
+    query = from e in Brainhub.Employment,
+      where: e.user_id == ^user_id and e.company_id == ^company_id,
+      select: e.id
+    !!Brainhub.Repo.one(query)
+  end
 end

@@ -4,6 +4,7 @@ defmodule Brainhub.ProjectControllerTest do
   import Brainhub.Factory
 
   alias Brainhub.Project
+  alias Brainhub.AuthCase
 
   @valid_attrs %{name: "New Name", description: "New Description"}
   @invalid_attrs %{}
@@ -11,8 +12,7 @@ defmodule Brainhub.ProjectControllerTest do
   setup %{conn: conn} do
     user = insert(:user)
     conn = put_req_header(conn, "accept", "application/json")
-    {:ok, jwt, _} = Guardian.encode_and_sign(user)
-    {:ok, conn: conn, auth_conn: put_req_header(conn, "authorization", jwt), user: user}
+    AuthCase.sign_in conn, user
   end
 
   describe "index/3" do
