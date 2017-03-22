@@ -47,7 +47,6 @@ export class ShowProjectComponent implements OnInit, OnDestroy {
   }
 
   createTeam() {
-    console.log(this.newTeam);
     this.loading = true;
     this.teamService.create(this.newTeam).subscribe(
       success => {

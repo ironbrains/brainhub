@@ -6,7 +6,7 @@ defmodule Brainhub.ProjectController do
   plug :current_user
   plug :verify_creator when action in [:edit, :update, :delete]
 
-  alias Brainhub.Project
+  alias Brainhub.{Project, Team}
 
   def action(conn, _) do
     apply(__MODULE__, action_name(conn), [conn,
@@ -42,7 +42,7 @@ defmodule Brainhub.ProjectController do
 
   def show(conn, %{"id" => id}, _user) do
     project = Repo.get!(Project, id)
-      |> Repo.preload(:teams)
+      |> Repo.preload(teams: from(t in Team, order_by: t.id))
     render(conn, "show.json", project: project)
   end
 

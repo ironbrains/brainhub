@@ -14,9 +14,20 @@
             .spinner
       .card-content
         .card-title Teams
-        .row *ngFor="let team of project.teams" bind-hidden="loading"
-          .col-md-12
-            p {{team.name}}
+        .row bind-hidden="loading"
+          table.table.table-hover
+            thead
+              tr
+                th #
+                th Name
+                th Members
+                th
+            tbody
+              tr *ngFor="let team of project.teams"
+                th {{team.id}}
+                td {{team.name}}
+                td no members
+                td
 
         .row.align-center bind-hidden="project.teams && project.teams.length > 0"
           .col-md-12
