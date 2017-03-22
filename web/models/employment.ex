@@ -15,7 +15,7 @@ defmodule Brainhub.Employment do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:role])
-    |> validate_required([:role])
+    |> cast(params, [:user_id, :company_id, :role])
+    |> validate_required([:user_id, :company_id, :role])
   end
 end

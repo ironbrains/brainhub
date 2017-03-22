@@ -14,9 +14,24 @@
             .spinner
       .card-content
         .card-title Teams
-        p *ngFor="let team of project.teams" bind-hidden="loading"
-          | {{team.name}}
-        p.align-center bind-hidden="project.teams && project.teams.length > 0" This project has no team
+        .row *ngFor="let team of project.teams" bind-hidden="loading"
+          .col-md-12
+            p {{team.name}}
+
+        .row.align-center bind-hidden="project.teams && project.teams.length > 0"
+          .col-md-12
+            p This project has no team
+
+        .row bind-hidden="!teamCreating"
+          .col-md-6.offset-md-3
+            form.form-inline
+              label.sr-only for="name" Name
+              input.form-control.mb-2.mr-sm-2.mb-sm-0#name type="text" placeholder="Team Name" name="name" bindon-ngModel="newTeam.name"
+              button.btn.btn-primary on-click="createTeam()" type="submit" Submit
+
+        .row.align-center *ngIf="isEditable()" bind-hidden="teamCreating"
+          .col-md-12
+            span.btn.btn-primary on-click="showTeamForm()" Create New Team
 .row *ngIf="isEditable()"
   .col-md-12.align-right
     button.btn.btn-danger on-click="destroy()" Delete Project

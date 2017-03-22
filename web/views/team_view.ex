@@ -10,6 +10,6 @@ defmodule Brainhub.TeamView do
   end
 
   def render("team.json", %{team: team}) do
-    %{id: team.id}
+    %{id: team.id, name: team.name}
   end
 end

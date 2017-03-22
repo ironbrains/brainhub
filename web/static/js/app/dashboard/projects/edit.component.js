@@ -9,8 +9,8 @@ import { ShowProjectComponent } from './show.component'
 })
 export class EditProjectComponent extends ShowProjectComponent {
 
-  constructor(router, route, projectService, location) {
-    super(router, route, projectService, location, 'edit');
+  constructor(router, route, projectService, teamService, location) {
+    super(router, route, projectService, teamService, location, 'edit');
   }
 
   update() {

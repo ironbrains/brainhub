@@ -18,7 +18,7 @@ defmodule Brainhub.Project do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :description])
+    |> cast(params, [:name, :description, :company_id])
     |> validate_required([:name, :description])
   end
 end
