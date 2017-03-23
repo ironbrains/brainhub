@@ -30,7 +30,7 @@ defmodule Brainhub.Factory do
     %Brainhub.Employment{
       user: build(:user),
       company: build(:company),
-      role: "admin"
+      role: "CEO"
     }
   end
 end

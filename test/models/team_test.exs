@@ -9,7 +9,7 @@ defmodule Brainhub.TeamTest do
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do
-    employment = insert(:employment)
+    employment = insert(:employment, role: "CEO")
       |> Repo.preload(:user)
       |> Repo.preload(:company)
     project = insert :project, creator: employment.user, company: employment.company

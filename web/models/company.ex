@@ -28,4 +28,12 @@ defmodule Brainhub.Company do
       select: e.id
     !!Brainhub.Repo.one(query)
   end
+
+  def management?(company_id, user_id) do
+    query = from e in Brainhub.Employment,
+      where: e.user_id == ^user_id and e.company_id == ^company_id,
+      select: e.role
+    role = Brainhub.Repo.one(query)
+    Enum.member? ["CEO", "CTO", "project manager"], role
+  end
 end

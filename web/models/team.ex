@@ -25,7 +25,7 @@ defmodule Brainhub.Team do
       %Ecto.Changeset{valid?: true, changes: %{project_id: project_id, user_id: user_id}} ->
         project = Brainhub.Repo.get(Brainhub.Project, project_id)
 
-        if Brainhub.Company.employer?(project.company_id, user_id) do
+        if Brainhub.Company.management?(project.company_id, user_id) do
           changeset
         else
           add_error(changeset, :user_id, "can't create team for this project")
