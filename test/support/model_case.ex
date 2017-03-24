@@ -22,6 +22,9 @@ defmodule Brainhub.ModelCase do
       import Ecto.Changeset
       import Ecto.Query
       import Brainhub.ModelCase
+      import Brainhub.Factory
+
+      @endpoint Brainhub.Endpoint
     end
   end
 

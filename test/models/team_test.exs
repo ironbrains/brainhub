@@ -3,8 +3,6 @@ defmodule Brainhub.TeamTest do
 
   alias Brainhub.Team
 
-  import Brainhub.Factory
-
   @valid_attrs %{name: "Team Name", project_id: nil, user_id: nil}
   @invalid_attrs %{}
 

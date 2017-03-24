@@ -33,4 +33,11 @@ defmodule Brainhub.Factory do
       role: "CEO"
     }
   end
+
+  def team_factory do
+    %Brainhub.Team{
+      name: "Team name",
+      project: build(:project)
+    }
+  end
 end

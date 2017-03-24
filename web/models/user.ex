@@ -12,6 +12,8 @@ defmodule Brainhub.User do
 
     has_many :created_projects, Brainhub.Project, foreign_key: :creator_id
     has_many :employments, Brainhub.Employment
+    has_many :team_memberships, Brainhub.TeamMembership
+    has_many :teams, through: [:team_memberships, :team]
 
     timestamps()
   end

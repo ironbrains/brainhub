@@ -26,6 +26,7 @@ defmodule Brainhub.ConnCase do
       import Ecto.Query
 
       import Brainhub.Router.Helpers
+      import Brainhub.Factory
 
       # The default endpoint for testing
       @endpoint Brainhub.Endpoint

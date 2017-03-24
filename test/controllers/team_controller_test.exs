@@ -1,8 +1,6 @@
 defmodule Brainhub.TeamControllerTest do
   use Brainhub.ConnCase
 
-  import Brainhub.Factory
-
   alias Brainhub.Team
   alias Brainhub.AuthCase
 

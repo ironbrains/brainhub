@@ -1,8 +1,6 @@
 defmodule Brainhub.ProjectControllerTest do
   use Brainhub.ConnCase
 
-  import Brainhub.Factory
-
   alias Brainhub.Project
   alias Brainhub.AuthCase
 

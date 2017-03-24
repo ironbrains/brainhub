@@ -7,6 +7,11 @@ defmodule Brainhub.Team do
 
     belongs_to :project, Brainhub.Project
 
+    has_one :company, through: [:project, :company]
+
+    has_many :team_memberships, Brainhub.TeamMembership
+    has_many :members, through: [:team_memberships, :user]
+
     timestamps()
   end
 
