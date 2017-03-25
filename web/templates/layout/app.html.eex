@@ -14,7 +14,14 @@
 
   <body>
     <brainhub>
-      Loading...
+      <div id="full" class="loading">
+        <div class="outer-wrapper">
+          <div class="valign">
+            <div class="spinner">
+            </div>
+          </div>
+        </div>
+      </div>
     </brainhub>
 
     <script src="<%= static_path(@conn, "/js/application.js") %>"></script>
