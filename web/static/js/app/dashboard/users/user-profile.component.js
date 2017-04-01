@@ -13,6 +13,12 @@ export class UserProfileComponent {
 
   constructor(userService) {
     this.userService = userService;
-    this.user = userService.currentUser();
+    this.user = userService.currentUser(true);
+    this.userService.getCurrentUser().subscribe(
+      success => this.user = success,
+      error => {
+        console.log(error);
+      }
+    )
   }
 };

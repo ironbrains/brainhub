@@ -18,12 +18,29 @@
             label.col-2.col-form-label for="lastName" Last name
             .col-10
               <input class="form-control" type="text" [(ngModel)]="user.last_name" id="last_name" name="last_name">
-
     .material-card
       .card-content
-        span.card-title Other
+        span.card-title Contacts
         form
           .form-group.row
             label.col-2.col-form-label for="firstName" Email
             .col-10
               <input class="form-control" type="text" [(ngModel)]="user.email" id="email" name="email">
+
+    .material-card
+      .card-content
+        span.card-title Employment
+        .row
+          .col-md-2
+            p Company
+          .col-md-10
+            p {{user.employment.company}}
+          .col-md-2
+            p Employee since
+          .col-md-10
+            p {{user.employment.start_date}}
+        .row
+          .col-md-2
+            p Role
+          .col-md-10
+            p {{user.employment.role}}

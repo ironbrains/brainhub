@@ -70,6 +70,5 @@ export class ProjectService {
   setHeaders(headers) {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', localStorage.getItem('jwt'));
-
   }
 }

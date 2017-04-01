@@ -32,6 +32,20 @@ defmodule Brainhub.User do
     |> generate_encrypted_password
   end
 
+  def current_employment(user) do
+    assoc(user, :employments)
+      |> last
+      |> Brainhub.Repo.one
+  end
+
+  def current_company(user) do
+    employment = assoc(user, :employments)
+      |> last
+      |> Brainhub.Repo.one
+      |> Brainhub.Repo.preload(:company)
+    employment.company
+  end
+
   def generate_encrypted_password(current_changeset) do
     case current_changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->

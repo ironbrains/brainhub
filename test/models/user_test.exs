@@ -9,13 +9,21 @@ defmodule Brainhub.UserTest do
   }
   @invalid_attrs %{}
 
-  test "changeset with valid attributes" do
-    changeset = User.changeset(%User{}, @valid_attrs)
-    assert changeset.valid?
+  describe "changeset/2" do
+    test "with valid attributes" do
+      changeset = User.changeset(%User{}, @valid_attrs)
+      assert changeset.valid?
+    end
+
+    test "with invalid attributes" do
+      changeset = User.changeset(%User{}, @invalid_attrs)
+      refute changeset.valid?
+    end
   end
 
-  test "changeset with invalid attributes" do
-    changeset = User.changeset(%User{}, @invalid_attrs)
-    refute changeset.valid?
+  describe "current_employment/1" do
+  end
+
+  describe "current_company/1" do
   end
 end

@@ -26,6 +26,7 @@ defmodule Brainhub.Router do
 
       resources "/projects", ProjectController, except: [:new]
       resources "/teams",    TeamController,    except: [:new, :edit]
+      resources "/users",    UserController,    except: [:new, :edit]
     end
   end
 

@@ -63,4 +63,26 @@ export class UserService {
   currentUser() {
     return JSON.parse(localStorage.user)
   }
+
+  getCurrentUser() {
+    return this.show(this.currentUser().id).map(res => {
+      localStorage.setItem('user', JSON.stringify(res));
+      return res;
+    });
+
+  }
+
+  show(id) {
+    id = (id instanceof Object) ? id.id : id;
+    var headers = new Headers();
+    this.setHeaders(headers);
+    return this.http
+            .get('/api/v1/users/' + id, { headers: headers })
+            .map(res => res.json())
+  }
+
+  setHeaders(headers) {
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', localStorage.getItem('jwt'));
+  }
 }
