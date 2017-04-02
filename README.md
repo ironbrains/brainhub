@@ -1,5 +1,7 @@
 # Brainhub
 
+[![Build Status](https://travis-ci.org/ironbrains/brainhub.svg?branch=master)](https://travis-ci.org/ironbrains/brainhub)
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
