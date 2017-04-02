@@ -21,4 +21,15 @@ export class UserProfileComponent {
       }
     )
   }
+
+  update() {
+    this.userService.update(this.user).subscribe(
+      success => {
+        this.user = success;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
 };

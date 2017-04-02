@@ -81,6 +81,15 @@ export class UserService {
             .map(res => res.json())
   }
 
+  update(user) {
+    var headers = new Headers();
+    this.setHeaders(headers);
+    var creds = JSON.stringify({ user: user });
+    return this.http
+            .put('/api/v1/users/' + user.id, creds, { headers: headers })
+            .map(res => res.json());
+  }
+
   setHeaders(headers) {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', localStorage.getItem('jwt'));
