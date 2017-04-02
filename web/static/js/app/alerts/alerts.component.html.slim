@@ -1,0 +1,5 @@
+.alerts__wrapper
+  .alert ngClass="{{alert.class}}" *ngFor="let alert of alertsList"
+    button type="button" class="close" aria-label="Close" on-click="close(alert)"
+      span aria-hidden="true" &times;
+    | {{alert.message}}

@@ -1,5 +1,6 @@
-import { Component }   from '@angular/core';
-import { UserService } from '../../users/user.service';
+import { Component }    from '@angular/core';
+import { UserService }  from '../../users/user.service';
+import { AlertService } from '../../alerts/alert.service';
 
 @Component({
   selector: 'user-profile',
@@ -8,11 +9,12 @@ import { UserService } from '../../users/user.service';
 })
 export class UserProfileComponent {
   static get parameters() {
-    return [[UserService]];
+    return [[UserService], [AlertService]];
   }
 
-  constructor(userService) {
+  constructor(userService, alertService) {
     this.userService = userService;
+    this.alertService = alertService;
     this.user = userService.currentUser(true);
     this.userService.getCurrentUser().subscribe(
       success => this.user = success,
@@ -25,6 +27,7 @@ export class UserProfileComponent {
   update() {
     this.userService.update(this.user).subscribe(
       success => {
+        this.alertService.successMessage('Profile is successfully updated');
         this.user = success;
       },
       error => {

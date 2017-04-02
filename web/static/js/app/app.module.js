@@ -15,9 +15,12 @@ import { RegistrationFormComponent } from './registration/registration-form.comp
 import { LoginComponent }            from './login/login.component';
 import { LoginFormComponent }        from './login/login-form.component';
 
-import { DashboardModule }        from './dashboard/dashboard.module';
+import { AlertsComponent }           from './alerts/alerts.component';
 
-import { UserService }               from './users/user.service'
+import { DashboardModule }           from './dashboard/dashboard.module';
+
+import { UserService }               from './users/user.service';
+import { AlertService }              from './alerts/alert.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,8 @@ import { UserService }               from './users/user.service'
     RegistrationComponent,
     RegistrationFormComponent,
     LoginComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ import { UserService }               from './users/user.service'
     AppRoutingModule
   ],
   providers: [
-    UserService
+    UserService,
+    AlertService
   ],
   bootstrap: [AppComponent]
 })
