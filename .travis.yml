@@ -1,15 +1,16 @@
 language: elixir
-node_js:
-  - 7.8.0
 elixir:
   - 1.4.1
 otp_release:
   - 19.2
-sudo: false
-addons:  
+addons:
   postgresql: '9.4'
-install:
-  - npm install
+services:
+  - postgresql
+before_install:
+  - cp config/test.travis.exs config/test.secret.exs
+  - cp config/dev.travis.exs config/dev.secret.exs
 before_script:
   - mix do ecto.create, ecto.migrate
-script: mix test
+script:
+  - mix test --exclude integration
