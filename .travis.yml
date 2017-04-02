@@ -1,12 +1,15 @@
 language: elixir
+node_js:
+  - 7.8.0
 elixir:
   - 1.4.1
 otp_release:
   - 19.2
 sudo: false
 addons:  
-    postgresql: '9.4'
-before_script:  
-    - npm install
-    - mix do ecto.create, ecto.migrate
+  postgresql: '9.4'
+install:
+  - npm install
+before_script:
+  - mix do ecto.create, ecto.migrate
 script: mix test
