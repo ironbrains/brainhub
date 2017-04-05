@@ -30,7 +30,8 @@ defmodule Brainhub.Factory do
     %Brainhub.Employment{
       user: build(:user),
       company: build(:company),
-      role: "CEO"
+      role: "CEO",
+      start_at: Calendar.DateTime.now_utc
     }
   end
 

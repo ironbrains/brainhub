@@ -27,7 +27,8 @@ defmodule Brainhub.Mixfile do
       :gettext,
       :phoenix_ecto,
       :postgrex,
-      :comeonin
+      :comeonin,
+      :calendar
     ]]
   end
 
@@ -50,6 +51,7 @@ defmodule Brainhub.Mixfile do
       {:cowboy, "~> 1.0"},
       {:comeonin, "~> 3.0"},
       {:guardian, "~> 0.14"},
+      {:calendar, "~> 0.17"},
       {:ex_machina, "~> 2.0", only: :test}
     ]
   end
