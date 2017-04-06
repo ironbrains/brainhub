@@ -1,6 +1,8 @@
 defmodule Brainhub.User do
   use Brainhub.Web, :model
 
+  alias Brainhub.Repo
+
   @derive {Poison.Encoder, only: [:id, :first_name, :last_name, :email]}
 
   schema "users" do
@@ -33,16 +35,15 @@ defmodule Brainhub.User do
   end
 
   def current_employment(user) do
+    now = Calendar.DateTime.now_utc
     assoc(user, :employments)
-      |> last
-      |> Brainhub.Repo.one
+      |> where([e], e.start_at <= ^now and (is_nil(e.end_at) or e.end_at >= ^now))
+      |> Repo.one
   end
 
   def current_company(user) do
-    employment = assoc(user, :employments)
-      |> last
-      |> Brainhub.Repo.one
-      |> Brainhub.Repo.preload(:company)
+    employment = current_employment(user)
+      |> Repo.preload(:company)
     employment.company
   end
 

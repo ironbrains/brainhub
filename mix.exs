@@ -52,7 +52,8 @@ defmodule Brainhub.Mixfile do
       {:comeonin, "~> 3.0"},
       {:guardian, "~> 0.14"},
       {:calendar, "~> 0.17"},
-      {:ex_machina, "~> 2.0", only: :test}
+      {:ex_machina, "~> 2.0", only: :test},
+      {:good_times, "~> 1.1", only: :test}
     ]
   end
 
