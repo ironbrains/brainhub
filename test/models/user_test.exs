@@ -63,5 +63,21 @@ defmodule Brainhub.UserTest do
   end
 
   describe "current_company/1" do
+    test "when user is hired", %{user: user, a_week_ago: a_week_ago} do
+      employment = insert :employment, user: user, start_at: a_week_ago
+      current_company = User.current_company(user)
+      assert current_company
+      assert current_company.id == employment.company.id
+    end
+
+    test "when user is not hired yet", %{user: user, tomorrow: tomorrow} do
+      _employment = insert :employment, user: user, start_at: tomorrow
+      refute User.current_company(user)
+    end
+
+    test "when user is fired", %{user: user, a_week_ago: a_week_ago, yesterday: yesterday} do
+      _employment = insert :employment, user: user, start_at: a_week_ago, end_at: yesterday
+      refute User.current_company(user)
+    end
   end
 end

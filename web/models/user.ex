@@ -42,9 +42,12 @@ defmodule Brainhub.User do
   end
 
   def current_company(user) do
-    employment = current_employment(user)
-      |> Repo.preload(:company)
-    employment.company
+    case current_employment(user) do
+      nil -> nil
+      employment ->
+        employment = Repo.preload(employment, :company)
+        employment.company
+    end
   end
 
   def generate_encrypted_password(current_changeset) do
