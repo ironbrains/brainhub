@@ -1,8 +1,8 @@
 defmodule Brainhub.UserView do
   use Brainhub.Web, :view
 
-  def render("index.json", %{teams: teams}) do
-    %{data: render_many(teams, Brainhub.UserView, "user.json")}
+  def render("index.json", %{users: users}) do
+    %{users: render_many(users, Brainhub.UserView, "user.json")}
   end
 
   def render("show.json", %{user: user}) do

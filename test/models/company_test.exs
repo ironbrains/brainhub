@@ -6,13 +6,27 @@ defmodule Brainhub.CompanyTest do
   @valid_attrs %{name: "some content", web_site: "some content"}
   @invalid_attrs %{}
 
-  test "changeset with valid attributes" do
-    changeset = Company.changeset(%Company{}, @valid_attrs)
-    assert changeset.valid?
+  describe "changeset/2" do
+    test "with valid attributes" do
+      changeset = Company.changeset(%Company{}, @valid_attrs)
+      assert changeset.valid?
+    end
+
+    test "with invalid attributes" do
+      changeset = Company.changeset(%Company{}, @invalid_attrs)
+      refute changeset.valid?
+    end
   end
 
-  test "changeset with invalid attributes" do
-    changeset = Company.changeset(%Company{}, @invalid_attrs)
-    refute changeset.valid?
+  describe "employer?/2" do
+  end
+
+  describe "management?/2" do
+  end
+
+  describe "employee_ids/1" do
+  end
+
+  describe "employees/1" do
   end
 end
