@@ -4,9 +4,11 @@ defmodule Brainhub.ProjectController do
 
   plug Guardian.Plug.EnsureAuthenticated, handler: Brainhub.SessionController
   plug :current_user
-  plug :verify_creator when action in [:edit, :update, :delete]
+  plug :current_company_id
+  plug :get_project when action in [:show, :edit, :update, :delete]
+  plug :modifiable? when action in [:edit, :update, :delete]
 
-  alias Brainhub.{Project, Team}
+  alias Brainhub.{Project, Company, Team}
 
   def action(conn, _) do
     apply(__MODULE__, action_name(conn), [conn,
@@ -14,9 +16,9 @@ defmodule Brainhub.ProjectController do
                                           conn.assigns.current_user])
   end
 
-  def index(conn, _params, user) do
-    projects = user
-      |> assoc(:created_projects)
+  def index(conn, _params, _user) do
+    projects = current_company(conn)
+      |> assoc(:projects)
       |> Repo.all
     render(conn, "index.json", projects: projects)
   end
@@ -40,10 +42,17 @@ defmodule Brainhub.ProjectController do
     end
   end
 
-  def show(conn, %{"id" => id}, _user) do
-    project = Repo.get!(Project, id)
-      |> Repo.preload(teams: from(t in Team, order_by: t.id))
-    render(conn, "show.json", project: project)
+  def show(conn, _params, _user) do
+    case conn.assigns.project do
+      nil ->
+        conn
+        |> put_status(:not_found)
+        |> render(Brainhub.ErrorView, "not_found.json")
+      project ->
+        project = project
+          |> Repo.preload(teams: from(t in Team, order_by: t.id))
+        render(conn, "show.json", project: project)
+    end
   end
 
   def edit(conn, _params, _user) do
@@ -75,18 +84,32 @@ defmodule Brainhub.ProjectController do
     send_resp(conn, :no_content, "")
   end
 
-  defp verify_creator(conn, _) do
-    project = conn.assigns.current_user
-      |> assoc(:created_projects)
+  defp get_project(conn, _) do
+    project = current_company(conn)
+      |> assoc(:projects)
       |> Repo.get(conn.params["id"])
     case project do
       nil ->
         conn
-        |> put_status(:forbidden)
-        |> render(Brainhub.ErrorView, "forbidden.json")
+        |> put_status(:not_found)
+        |> render(Brainhub.ErrorView, "not_found.json")
         |> halt
-      _project ->
-        assign(conn, :project, project)
+      project -> assign conn, :project, project
     end
+  end
+
+  def modifiable?(conn, _) do
+    if Project.modifiable?(conn.assigns.project, conn.assigns.current_user) do
+      conn
+    else
+      conn
+      |> put_status(:forbidden)
+      |> render(Brainhub.ErrorView, "forbidden.json")
+      |> halt
+    end
+  end
+
+  defp current_company(conn) do
+    Repo.get Company, conn.assigns.current_company_id
   end
 end

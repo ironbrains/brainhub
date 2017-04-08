@@ -21,4 +21,8 @@ defmodule Brainhub.Project do
     |> cast(params, [:name, :description, :company_id])
     |> validate_required([:name, :description])
   end
+
+  def modifiable?(project, user) do
+    project.creator_id == user.id
+  end
 end

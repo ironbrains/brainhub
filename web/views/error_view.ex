@@ -9,8 +9,12 @@ defmodule Brainhub.ErrorView do
     "Internal server error"
   end
 
+  def render("not_found.json", _assigns) do
+    %{error: "Page not found"}
+  end
+
   def render("forbidden.json", _assigns) do
-    %{}
+    %{erorr: "Access forbidden"}
   end
 
   # In case no render clause matches or no
