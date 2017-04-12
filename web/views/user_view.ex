@@ -18,7 +18,13 @@ defmodule Brainhub.UserView do
   end
 
   def render("user.json", %{user: user}) do
-    %{id: user.id}
+    %{
+      id: user.id,
+      avatar_thumb: gravatar(user, :thumb),
+      email: user.email,
+      first_name: user.first_name,
+      last_name: user.last_name
+    }
   end
 
   def render("employment.json", %{user: user}) do

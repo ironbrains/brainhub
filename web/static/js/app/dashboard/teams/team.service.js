@@ -26,7 +26,7 @@ export class TeamService {
     var headers = new Headers();
     this.setHeaders(headers);
     return this.http
-            .get('/api/v1/projects/' + id, { headers: headers })
+            .get('/api/v1/teams/' + id, { headers: headers })
             .map(res => res.json());
   }
 

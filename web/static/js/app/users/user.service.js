@@ -72,13 +72,21 @@ export class UserService {
 
   }
 
+  index() {
+    var headers = new Headers();
+    this.setHeaders(headers);
+    return this.http
+            .get('/api/v1/users', { headers: headers })
+            .map(res => res.json());
+  }
+
   show(id) {
     id = (id instanceof Object) ? id.id : id;
     var headers = new Headers();
     this.setHeaders(headers);
     return this.http
             .get('/api/v1/users/' + id, { headers: headers })
-            .map(res => res.json())
+            .map(res => res.json());
   }
 
   update(user) {

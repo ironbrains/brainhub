@@ -6,7 +6,13 @@ defmodule Brainhub.TeamView do
   end
 
   def render("show.json", %{team: team}) do
-    %{id: team.id, name: team.name, project_id: team.project_id}
+    team = Brainhub.Repo.preload team, :members
+    %{
+      id: team.id,
+      name: team.name,
+      project_id: team.project_id,
+      members: render_many(team.members, Brainhub.UserView, "user.json")
+    }
   end
 
   def render("team.json", %{team: team}) do

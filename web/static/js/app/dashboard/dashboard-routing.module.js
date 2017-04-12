@@ -11,6 +11,8 @@ import { ShowProjectComponent }    from './projects/show.component';
 import { EditProjectComponent }    from './projects/edit.component';
 import { NewProjectComponent }     from './projects/new.component';
 
+import { ShowTeamComponent }       from './teams/show.component';
+
 const dashboardRoutes = [
   {
     path: 'app',
@@ -26,6 +28,12 @@ const dashboardRoutes = [
           { path: 'new', component: NewProjectComponent },
           { path: ':id/edit', component: EditProjectComponent },
           { path: ':id', component: ShowProjectComponent }
+        ]
+      },
+      {
+        path: 'teams',
+        children: [
+          { path: ':id', component: ShowTeamComponent }
         ]
       }
     ]

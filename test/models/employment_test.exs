@@ -3,7 +3,7 @@ defmodule Brainhub.EmploymentTest do
 
   alias Brainhub.Employment
 
-  @valid_attrs %{role: "some content", user_id: 1, company_id: 1, start_at: Calendar.DateTime.now_utc}
+  @valid_attrs %{role: "developer", user_id: 1, company_id: 1, start_at: Calendar.DateTime.now_utc}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

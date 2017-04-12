@@ -1,0 +1,37 @@
+h1 {{team.name}}
+
+.row
+  .col-md-8
+    .material-card
+      .loading bind-hidden="!loading"
+        .outer-wrapper
+          .valign
+            .spinner
+      .card-content
+        .card-title Members
+        .row bind-hidden="loading"
+          table.table.table-hover
+            thead
+              tr
+                th #
+                th First Name
+                th Last Name
+                th
+            tbody
+              tr *ngFor="let member of team.members"
+                th {{member.id}}
+                td {{member.first_name}}
+                td {{member.last_name}}
+                td
+                
+        .row bind-hidden="!memberAdding"
+          .col-md-8.offset-md-2
+            .row
+              .col-md-9
+                ng-select bind-options="users" bindon-ngModel="newMemberId"
+              .col-md-3
+                button.btn.btn-primary on-click="addMember()" type="submit" Submit
+
+        .row.align-center *ngIf="isEditable()" bind-hidden="memberAdding"
+          .col-md-12
+            span.btn.btn-primary on-click="showMemberForm()" Add New Member

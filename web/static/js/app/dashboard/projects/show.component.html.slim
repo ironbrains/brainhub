@@ -28,6 +28,7 @@
                 td {{team.name}}
                 td no members
                 td
+                  a.btn.btn-default routerLink="/app/teams/{{team.id}}" Add members
 
         .row.align-center bind-hidden="project.teams && project.teams.length > 0"
           .col-md-12

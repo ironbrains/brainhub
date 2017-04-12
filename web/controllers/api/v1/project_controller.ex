@@ -33,7 +33,6 @@ defmodule Brainhub.ProjectController do
         project = Repo.preload(project, :teams)
         conn
         |> put_status(:created)
-        |> put_resp_header("location", project_path(conn, :show, project))
         |> render("show.json", project: project)
       {:error, changeset} ->
         conn
