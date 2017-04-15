@@ -11,7 +11,6 @@ defmodule Brainhub.TeamControllerTest do
     company = insert :company
     project = insert :project, company: company
     attrs = %{@valid_attrs | project_id: project.id}
-    conn = put_req_header(conn, "accept", "application/json")
     AuthCase.sign_in(conn, user) |> AuthCase.merge({:ok, company: company, valid_attrs: attrs})
   end
 

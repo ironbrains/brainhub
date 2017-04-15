@@ -25,7 +25,9 @@ defmodule Brainhub.Router do
       delete "/sessions", SessionController, :delete
 
       resources "/projects", ProjectController, except: [:new]
-      resources "/teams",    TeamController,    except: [:new, :edit]
+      resources "/teams",    TeamController,    except: [:new, :edit] do
+        resources "/memberships", MembershipController, only: [:create, :delete]
+      end
       resources "/users",    UserController,    except: [:new, :edit]
     end
   end

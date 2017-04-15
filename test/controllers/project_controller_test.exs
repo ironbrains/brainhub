@@ -11,7 +11,6 @@ defmodule Brainhub.ProjectControllerTest do
     user = insert :user
     company = insert :company
     insert :employment, user: user, company: company
-    conn = put_req_header(conn, "accept", "application/json")
     AuthCase.sign_in(conn, user) |> AuthCase.merge({:ok, company: company})
   end
 
