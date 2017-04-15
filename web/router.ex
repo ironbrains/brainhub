@@ -29,6 +29,7 @@ defmodule Brainhub.Router do
         resources "/memberships", MembershipController, only: [:create, :delete]
       end
       resources "/users",    UserController,    except: [:new, :edit]
+      resources "/time_entries", TimeEntryController, except: [:new, :edit]
     end
   end
 
