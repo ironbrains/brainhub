@@ -21,6 +21,7 @@ export class ShowTeamComponent implements OnInit, OnDestroy {
     this.userService = userService;
     this.location = location;
     this.team = {};
+    this.newMembership = {};
     this.loading = true;
   }
 
@@ -43,6 +44,7 @@ export class ShowTeamComponent implements OnInit, OnDestroy {
         this.teamService.show(this.id).subscribe(
           success => {
             this.team = success;
+            this.cleanUsersList();
             this.loading = false;
           },
           error => {
@@ -67,7 +69,24 @@ export class ShowTeamComponent implements OnInit, OnDestroy {
   }
 
   addMember() {
-    console.log(this.newMember);
-    this.newMemberId = null;
+    this.teamService.addMember(this.team, this.newMembership).subscribe(
+      success => {
+        this.team.members.push(success.user);
+        this.cleanUsersList();
+      },
+      error => {
+        console.log('error', error);
+      }
+    );
+    this.newMembership = {};
+  }
+
+  cleanUsersList() {
+    this.team.members.forEach((member) => {
+      let index = this.users.findIndex((user) => member.id == user.value);
+      this.users.splice(index, 1);
+    })
+    let newArray  = this.users.slice();
+    this.users = newArray;
   }
 };

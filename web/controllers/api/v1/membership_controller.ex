@@ -13,8 +13,10 @@ defmodule Brainhub.MembershipController do
                                           conn.assigns.current_user])
   end
 
-  def create(conn, %{"membership" => membership_params}, user) do
-    membership_params = Map.put membership_params, "initiator_id", user.id
+  def create(conn, %{"team_id" => team_id, "membership" => membership_params}, user) do
+    membership_params = membership_params
+      |> Map.put("initiator_id", user.id)
+      |> Map.put("team_id", team_id)
     changeset = TeamMembership.changeset(%TeamMembership{}, membership_params)
 
     case Repo.insert(changeset) do

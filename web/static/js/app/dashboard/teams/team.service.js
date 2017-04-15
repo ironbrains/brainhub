@@ -26,7 +26,7 @@ export class TeamService {
     var headers = new Headers();
     this.setHeaders(headers);
     return this.http
-            .get('/api/v1/teams/' + id, { headers: headers })
+            .get(`/api/v1/teams/${id}`, { headers: headers })
             .map(res => res.json());
   }
 
@@ -44,7 +44,7 @@ export class TeamService {
     var headers = new Headers();
     this.setHeaders(headers);
     return this.http
-            .get('/api/v1/teams/' + id + '/edit', { headers: headers })
+            .get(`/api/v1/teams/${id}/edit`, { headers: headers })
             .map(res => res.json());
   }
 
@@ -53,7 +53,7 @@ export class TeamService {
     this.setHeaders(headers);
     var creds = JSON.stringify({ team: team });
     return this.http
-            .put('/api/v1/teams/' + project.id, creds, { headers: headers })
+            .put(`/api/v1/teams/${project.id}`, creds, { headers: headers })
             .map(res => res.json());
   }
 
@@ -63,13 +63,23 @@ export class TeamService {
     this.setHeaders(headers);
     var creds = JSON.stringify({});
     return this.http
-            .delete('/api/v1/teams/' + id, { headers: headers })
+            .delete(`/api/v1/teams/${id}`, { headers: headers })
+            .map(res => res.json());
+  }
+
+
+  addMember(team_id, membership) {
+    var headers = new Headers();
+    team_id = (team_id instanceof Object) ? team_id.id : team_id;
+    this.setHeaders(headers);
+    var creds = JSON.stringify({ membership: membership });
+    return this.http
+            .post(`/api/v1/teams/${team_id}/memberships`, creds, { headers: headers })
             .map(res => res.json());
   }
 
   setHeaders(headers) {
     headers.append('Content-Type', 'application/json');
     headers.append('Authorization', localStorage.getItem('jwt'));
-
   }
 }
