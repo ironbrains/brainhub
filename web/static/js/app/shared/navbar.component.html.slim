@@ -2,9 +2,10 @@
   nav.nav.flex-column
     .header
       h2 Brainhub
-    a.nav-link routerLink="/app/dashboard/" routerLinkActive="active" Dashboard
-    a.nav-link routerLink="/app/profile" routerLinkActive="active" Profile
+    a.nav-link routerLink="/app/timer" routerLinkActive="active" Timer
+    a.nav-link routerLink="/app/dashboard" routerLinkActive="active" Dashboard
     a.nav-link routerLink="/app/projects" routerLinkActive="active" Projects
+    a.nav-link routerLink="/app/profile" routerLinkActive="active" Profile
     .footer
       span {{user.first_name}} {{user.last_name}}
       <span class="clickable" (click)="logout()">Logout</span>

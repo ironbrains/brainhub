@@ -9,9 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { DashboarRoutingModule }   from './dashboard-routing.module';
 
-import { NavbarComponent }         from '../shared/navbar.component'
+import { NavbarComponent }         from '../shared/navbar.component';
 
 import { DashboardComponent }      from './dashboard.component';
+
+import { IndexTimerComponent }     from './timer/index.component';
 import { IndexDashboardComponent } from './index-dashboard.component';
 import { UserProfileComponent }    from './users/user-profile.component';
 
@@ -23,11 +25,12 @@ import { ProjectForm }             from './projects/form.component';
 
 import { ShowTeamComponent }       from './teams/show.component';
 
-import { UserService }             from '../users/user.service'
+import { UserService }             from '../users/user.service';
 
 @NgModule({
   declarations: [
     DashboardComponent,
+    IndexTimerComponent,
     IndexDashboardComponent,
     UserProfileComponent,
 

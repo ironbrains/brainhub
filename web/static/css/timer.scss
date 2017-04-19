@@ -1,0 +1,33 @@
+.timer__button {
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 50%;
+  background: green;
+  margin: 0 1.5rem;
+
+  &.timer__active {
+    background: red;
+  }
+}
+
+.timer__duration {
+  font-size: 2.5rem;
+  color: grey;
+  width: 12rem;
+  align: right;
+  margin: 0 1rem;
+}
+
+
+.timer__project {
+  font-size: 2rem;
+  margin: 0 1rem;
+  line-height: 1.95;
+}
+
+.timer__total {
+  margin: 1.5rem 1.5rem 0rem;
+  span {
+    margin-left: 0.5rem;
+  }
+}

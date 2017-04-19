@@ -1,0 +1,35 @@
+.row#timer
+  .col-md-12
+    .material-card
+      .loading bind-hidden="!loading"
+        .outer-wrapper
+          .valign
+            .spinner
+      .card-content
+        .row
+          .timer__button bind-ngClass="isActive ? 'timer__active' : ''" on-click="toggle()"
+          .timer__duration {{durationString}}
+          .timer__project Project Name
+        .row
+          .timer__total
+              strong Total worked today:
+              span 04:33:65
+              
+.row#tasks-list
+  .col-md-12
+    .material-card
+      .loading bind-hidden="!loading"
+        .outer-wrapper
+          .valign
+            .spinner
+      .card-content
+        .row
+          .col-md-8
+            span Task #1
+          .col-md-4
+            span 3:02
+        .row
+          .col-md-8
+            span Task #1
+          .col-md-4
+            span 3:02

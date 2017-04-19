@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginGuard }              from '../login/login.guard';
 
 import { DashboardComponent }      from './dashboard.component';
+import { IndexTimerComponent }     from './timer/index.component';
 import { IndexDashboardComponent } from './index-dashboard.component';
 import { UserProfileComponent }    from './users/user-profile.component';
 import { ProjectsComponent }       from './projects/projects.component';
@@ -19,6 +20,7 @@ const dashboardRoutes = [
     canActivate: [LoginGuard],
     component: DashboardComponent,
     children: [
+      { path: 'timer', component: IndexTimerComponent },
       { path: 'dashboard', component: IndexDashboardComponent },
       { path: 'profile', component: UserProfileComponent },
       {
