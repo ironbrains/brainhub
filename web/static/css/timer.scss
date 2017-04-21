@@ -1,12 +1,69 @@
-.timer__button {
-  width: 4.2rem;
-  height: 4.2rem;
-  border-radius: 50%;
-  background: green;
-  margin: 0 1.5rem;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 
-  &.timer__active {
-    background: red;
+$background: #f9f9f9;
+$foreground: #2c3e50;
+
+$foreground-light: #34495e;
+
+
+$size: 20px;
+$ratio: 1.2;
+
+$transition-time: 0.3s;
+
+.timer__button {
+  display:block;
+  width: 0;
+	height: 0;
+	border-top: $size solid transparent;
+	border-bottom: $size solid transparent;
+	border-left: ($size*$ratio) solid $foreground;
+  margin: 10px 1.5rem 0 2.5rem;
+  position:relative;
+  z-index:1;
+  @include transition(all, $transition-time);
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: ($size*-1.5);
+    left: ($size*-2.3);
+    bottom: ($size*-1.5);
+    right: ($size*-0.7);
+    border-radius: 50%;
+    border: ($size*0.2) solid $foreground;
+    z-index: 2;
+    @include transition(all, $transition-time);
+  }
+  &:after {
+    content: '';
+    opacity: 0;
+    @include transition(opacity, ($transition-time * 2));
+  }
+
+  &:hover, &:focus {
+    &:before {
+       transform: scale(1.1);
+       -webkit-transform: scale(1.1);
+       -moz-transform: scale(1.1);
+    }
+  }
+
+  &.active {
+	  border-color: transparent;
+    &:after {
+      content: '';
+      opacity: 1;
+      width: ($size);
+      height: ($size*1.6);
+      background: $foreground;
+      position: absolute;
+      right: ($size*0.25);
+      top: ($size*-0.8);
+      border-left: ($size*0.4) solid $foreground;
+      border-right: ($size*0.4) solid $foreground;
+      box-shadow: inset ($size*0.6) 0 0 0 $background;
+    }
   }
 }
 

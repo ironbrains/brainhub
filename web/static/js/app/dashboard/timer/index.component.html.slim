@@ -7,7 +7,7 @@
             .spinner
       .card-content
         .row
-          .timer__button bind-ngClass="isActive ? 'timer__active' : ''" on-click="toggle()"
+          .timer__button bind-ngClass="isActive ? 'active' : ''" on-click="toggle()"
           .timer__duration {{durationString}}
           .timer__project Project Name
         .row
