@@ -14,6 +14,7 @@ import { NavbarComponent }         from '../shared/navbar.component';
 import { DashboardComponent }      from './dashboard.component';
 
 import { IndexTimerComponent }     from './timer/index.component';
+import { TimerProjectsListComponent } from './timer/projects-list.component';
 import { IndexDashboardComponent } from './index-dashboard.component';
 import { UserProfileComponent }    from './users/user-profile.component';
 
@@ -31,6 +32,7 @@ import { UserService }             from '../users/user.service';
   declarations: [
     DashboardComponent,
     IndexTimerComponent,
+    TimerProjectsListComponent,
     IndexDashboardComponent,
     UserProfileComponent,
 

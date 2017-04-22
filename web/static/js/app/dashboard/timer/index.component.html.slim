@@ -1,37 +1,44 @@
-.row#timer
-  .col-md-12
-    .material-card
-      .loading bind-hidden="!loading"
-        .outer-wrapper
-          .valign
-            .spinner
-      .card-content
-        .row
-          .timer__button bind-ngClass="isActive ? 'active' : ''" on-click="toggle()"
-          .timer__duration {{durationString}}
-          .timer__project Project Name
-        .row
-          .timer__total
+.container
+  .row#timer
+    .col-md-12
+      .material-card
+        .loading bind-hidden="!loading"
+          .outer-wrapper
+            .valign
+              .spinner
+        .card-content
+          .row.timer__body
+            .timer__button bind-ngClass="isActive ? 'active' : ''" on-click="toggle()"
+            .timer__duration
+              span.label {{durationString}}
+            .timer__task.no-task
+              span.label Task is not choosen
+            .timer__project bind-ngClass="project.name ? '' : 'no-project'"
+              span.label on-click="selectProject()" {{project.name || 'Select project'}}
+          .row
+            .timer__total
               strong Total worked today:
               span 04:33:65
-              
-.row#tasks-list
-  .col-md-12
-    .material-card
-      .loading bind-hidden="!loading"
-        .outer-wrapper
-          .valign
-            .spinner
-      .card-content
-        .row.task__item
-          .task__button
-          .task__title
-            span Task #1
-          .task__duration
-            span 3:02
-        .row.task__item
-          .task__button.active
-          .task__title
-            span Task #2
-          .task__duration
-            span 1:05
+
+  .row#tasks-list
+    .col-md-12
+      h3 Tasks of Some Project
+      .material-card
+        .loading bind-hidden="!loading"
+          .outer-wrapper
+            .valign
+              .spinner
+        .card-content
+          .row.task__item
+            .task__button
+            .task__title
+              span Task #1
+            .task__duration
+              span 3:02
+          .row.task__item
+            .task__button.active
+            .task__title
+              span Task #2
+            .task__duration
+              span 1:05
+  timer-projects-list bindon-shown="showProjectsList" bindon-project="project"

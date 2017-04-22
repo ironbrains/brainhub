@@ -123,6 +123,26 @@ body {
       font-weight: 300;
     }
   }
+
+  .card-action {
+     &:last-child {
+       border-radius: 0 0 2px 2px;
+     }
+     position: relative;
+     background-color: inherit;
+     border-top: 1px solid rgba(160,160,160,.2);
+     padding: 16px 24px;
+
+     a:not(.btn):not(.btn-large):not(.btn-floating) {
+       color: #ffab40;
+       margin-right: 24px;
+       transition: color .3s ease;
+       text-transform: uppercase;
+       cursor: pointer;
+
+       &:hover { color: #ffd8a6; }
+     }
+}
 }
 
 .align-left {

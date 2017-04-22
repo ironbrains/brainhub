@@ -1,0 +1,10 @@
+.material-modal bind-hidden="!shown"
+  .material-card
+    .card-content
+      h4 Projects
+      .projects__list
+        .project__item *ngFor="let project of projects" on-click="select(project)"
+          .project__marker.marker__yellow
+          .project__name {{project.name}}
+    .card-action
+      a on-click="close()" Close

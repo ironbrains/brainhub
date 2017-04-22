@@ -14,82 +14,120 @@ $task-background: #fff;
 
 $transition-time: 0.3s;
 
-.timer__button {
-  cursor: pointer;
-  display:block;
-  width: 0;
-	height: 0;
-	border-top: $size solid transparent;
-	border-bottom: $size solid transparent;
-	border-left: ($size*$ratio) solid $foreground;
-  margin: 10px 1.5rem 0 2.5rem;
-  position:relative;
-  z-index:1;
-  @include transition(all, $transition-time);
+.timer__body {
+  display: inline-block;
+  width: 100%;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: ($size*-1.5);
-    left: ($size*-2.3);
-    bottom: ($size*-1.5);
-    right: ($size*-0.7);
-    border-radius: 50%;
-    border: ($size*0.2) solid $foreground;
-    z-index: 2;
+  .timer__button {
+    cursor: pointer;
+    display: inline-block;
+    float: left;
+    width: 0;
+    height: 0;
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: ($size*$ratio) solid $foreground;
+    margin: 15px 1.5rem 0 2.5rem;
+    position:relative;
+    z-index:1;
     @include transition(all, $transition-time);
-  }
-  &:after {
-    content: '';
-    opacity: 0;
-    @include transition(opacity, ($transition-time * 2));
-  }
 
-  &:hover, &:focus {
     &:before {
-       transform: scale(1.1);
-       -webkit-transform: scale(1.1);
-       -moz-transform: scale(1.1);
+      content: '';
+      position: absolute;
+      top: ($size*-1.5);
+      left: ($size*-2.3);
+      bottom: ($size*-1.5);
+      right: ($size*-0.7);
+      border-radius: 50%;
+      border: ($size*0.2) solid $foreground;
+      z-index: 2;
+      @include transition(all, $transition-time);
     }
-  }
-
-  &.active {
-	  border-color: transparent;
     &:after {
       content: '';
-      opacity: 1;
-      width: ($size);
-      height: ($size*1.6);
-      background: $foreground;
-      position: absolute;
-      right: ($size*0.25);
-      top: ($size*-0.8);
-      border-left: ($size*0.4) solid $foreground;
-      border-right: ($size*0.4) solid $foreground;
-      box-shadow: inset ($size*0.6) 0 0 0 $background;
+      opacity: 0;
+      @include transition(opacity, ($transition-time * 2));
+    }
+
+    &:hover, &:focus {
+      &:before {
+         transform: scale(1.1);
+         -webkit-transform: scale(1.1);
+         -moz-transform: scale(1.1);
+      }
+    }
+
+    &.active {
+      border-color: transparent;
+      &:after {
+        content: '';
+        opacity: 1;
+        width: ($size);
+        height: ($size*1.6);
+        background: $foreground;
+        position: absolute;
+        right: ($size*0.25);
+        top: ($size*-0.8);
+        border-left: ($size*0.4) solid $foreground;
+        border-right: ($size*0.4) solid $foreground;
+        box-shadow: inset ($size*0.6) 0 0 0 $background;
+      }
     }
   }
-}
 
-.timer__duration {
-  font-size: 2.5rem;
-  color: grey;
-  width: 12rem;
-  align: right;
-  margin: 0 1rem;
-}
+  .timer__duration {
+    font-size: 2.5rem;
+    color: grey;
+    width: 9.8rem;
+    margin: 0 0.8rem;
+    float: left;
+    height: 100%;
+    span {
+      float: right;
+    }
+  }
 
+  .timer__task {
+    cursor: pointer;
+    display: flex;
+    font-size: 1.15rem;
+    margin: 0 0.8rem;
+    float: left;
+    height: 100%;
 
-.timer__project {
-  font-size: 2rem;
-  margin: 0 1rem;
-  line-height: 1.95;
+    &.no-task {
+      color: grey;
+    }
+  }
+
+  .timer__project {
+    cursor: pointer;
+    display: flex;
+    font-size: 1.15rem;
+    float: right;
+    height: 100%;
+
+    &.no-project {
+      color: grey;
+    }
+  }
+
+  span.label {
+    line-height: 72px;
+  }
 }
 
 .timer__total {
-  margin: 1.5rem 1.5rem 0rem;
+  margin: .5rem 1.5rem 0;
   span {
     margin-left: 0.5rem;
+  }
+}
+
+#tasks-list {
+  h3 {
+    font-weight: 300;
   }
 }
 
@@ -113,17 +151,20 @@ $transition-time: 0.3s;
     z-index:1;
     @include transition(all, $transition-time);
 
-    &.active:before {
-      content: '';
-      position: absolute;
-      top: ($task-size*-1.5);
-      left: ($task-size*-2.3);
-      bottom: ($task-size*-1.5);
-      right: ($task-size*-0.7);
-      border-radius: 50%;
-      border: ($task-size*0.2) solid $foreground;
-      z-index: 2;
-      @include transition(all, $transition-time);
+    &.active {
+      opacity: 1;
+      &:before {
+        content: '';
+        position: absolute;
+        top: ($task-size*-1.5);
+        left: ($task-size*-2.3);
+        bottom: ($task-size*-1.5);
+        right: ($task-size*-0.7);
+        border-radius: 50%;
+        border: ($task-size*0.2) solid $foreground;
+        z-index: 2;
+        @include transition(all, $transition-time);
+      }
     }
   }
 
@@ -149,6 +190,49 @@ $transition-time: 0.3s;
   &:hover {
     .task__button {
       opacity: 1;
+    }
+  }
+}
+
+.projects__list {
+  .project__item {
+    cursor: pointer;
+    width: 100%;
+    margin: 0.2rem 0;
+
+    .project__marker {
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      margin: 8px;
+      float: left;
+
+      &.marker__red {
+        background: red;
+      }
+
+      &.marker__orange {
+        background: orange;
+      }
+
+      &.marker__yellow {
+        background: yellow;
+      }
+
+      &.marker__green {
+        background: green;
+      }
+
+      &.marker__blue {
+        background: blue;
+      }
+
+      &.marker__violet {
+        background: violet;
+      }
+    }
+
+    .project__name {
     }
   }
 }

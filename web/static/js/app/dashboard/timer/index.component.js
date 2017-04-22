@@ -6,6 +6,7 @@ import { Component }      from '@angular/core';
 })
 export class IndexTimerComponent {
   constructor() {
+    this.project = {}
     this.duration = 0;
     this.parseDuration();
   }
@@ -20,6 +21,10 @@ export class IndexTimerComponent {
     } else {
       clearInterval(this.interval);
     }
+  }
+
+  selectProject() {
+    this.showProjectsList = true;
   }
 
   parseDuration() {
