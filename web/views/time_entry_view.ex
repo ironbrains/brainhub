@@ -1,8 +1,8 @@
 defmodule Brainhub.TimeEntryView do
   use Brainhub.Web, :view
 
-  def render("index.json", %{time_entries: time_entries}) do
-    %{data: render_many(time_entries, Brainhub.TimeEntryView, "time_entry.json")}
+  def render("index.json", %{projects: projects, time_entries: time_entries}) do
+    %{time_entries: render_many(time_entries, Brainhub.TimeEntryView, "time_entries.json")}
   end
 
   def render("show.json", %{time_entry: time_entry}) do

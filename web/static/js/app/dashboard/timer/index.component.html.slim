@@ -20,9 +20,9 @@
               strong Total worked today:
               span 04:33:65
 
-  .row#tasks-list
+  .row#tasks-list bind-hidden="!project.name"
     .col-md-12
-      h3 Tasks of Some Project
+      h3 Tasks of {{project.name}}
       .material-card
         .loading bind-hidden="!loading"
           .outer-wrapper

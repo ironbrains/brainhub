@@ -1,14 +1,30 @@
-import { Component }      from '@angular/core';
+import { Component } from '@angular/core';
+import { TimerService } from './timer.service';
 
 @Component({
   selector: 'index-timer',
-  template: require('./index.component.html.slim')
+  template: require('./index.component.html.slim'),
+  providers: [TimerService]
 })
 export class IndexTimerComponent {
-  constructor() {
+  static get parameters() {
+    return [[TimerService]];
+  }
+
+  constructor(timerService) {
+    this.timerService = timerService;
     this.project = {}
     this.duration = 0;
     this.parseDuration();
+
+    this.timerService.getList().subscribe(
+      success => {
+        console.log('success', success);
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
 
   toggle() {

@@ -2,13 +2,26 @@ defmodule Brainhub.TimeEntryController do
   use Brainhub.Web, :controller
 
   alias Brainhub.TimeEntry
+  import Brainhub.Authentication
 
-  def index(conn, _params) do
-    time_entries = Repo.all(TimeEntry)
-    render(conn, "index.json", time_entries: time_entries)
+  plug Guardian.Plug.EnsureAuthenticated, handler: Brainhub.SessionController
+  plug :current_user
+
+  alias Brainhub.Team
+
+  def action(conn, _) do
+    apply(__MODULE__, action_name(conn), [conn,
+                                          conn.params,
+                                          conn.assigns.current_user])
   end
 
-  def create(conn, %{"time_entry" => time_entry_params}) do
+  def index(conn, _params, user) do
+    time_entries = Repo.all(TimeEntry)
+    projects = Repo.all Brainhub.Project
+    render(conn, "index.json", projects: projects, time_entries: time_entries)
+  end
+
+  def create(conn, %{"time_entry" => time_entry_params}, _user) do
     changeset = TimeEntry.changeset(%TimeEntry{}, time_entry_params)
 
     case Repo.insert(changeset) do
@@ -24,12 +37,12 @@ defmodule Brainhub.TimeEntryController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"id" => id}, _user) do
     time_entry = Repo.get!(TimeEntry, id)
     render(conn, "show.json", time_entry: time_entry)
   end
 
-  def update(conn, %{"id" => id, "time_entry" => time_entry_params}) do
+  def update(conn, %{"id" => id, "time_entry" => time_entry_params}, _user) do
     time_entry = Repo.get!(TimeEntry, id)
     changeset = TimeEntry.changeset(time_entry, time_entry_params)
 
@@ -43,7 +56,7 @@ defmodule Brainhub.TimeEntryController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, %{"id" => id}, _user) do
     time_entry = Repo.get!(TimeEntry, id)
 
     # Here we use delete! (with a bang) because we expect

@@ -1,6 +1,8 @@
 defmodule Brainhub.Project do
   use Brainhub.Web, :model
 
+  alias Brainhub.Repo
+
   schema "projects" do
     field :name, :string
     field :description, :string
@@ -24,5 +26,22 @@ defmodule Brainhub.Project do
 
   def modifiable?(project, user) do
     project.creator_id == user.id
+  end
+
+  def available_ids_for(%Brainhub.User{id: user_id}), do: available_ids_for user_id
+
+  def available_ids_for(user_id) do
+    Brainhub.Team
+    |> where([t], t.id in ^Brainhub.Team.ids_for(user_id))
+    |> select([t], t.project_id)
+    |> Repo.all
+  end
+
+  def available_for(%Brainhub.User{id: user_id}), do: available_for user_id
+
+  def available_for(user_id) do
+    Brainhub.Project
+    |> where([p], p.id in ^available_ids_for(user_id))
+    |> Repo.all
   end
 end

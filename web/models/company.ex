@@ -24,8 +24,8 @@ defmodule Brainhub.Company do
     |> validate_required([:name, :web_site])
   end
 
-  def employer?(company, user) when is_map(company) and is_map(user) do
-    employer? company.id, user.id
+  def employer?(%Brainhub.Company{id: company_id}, %Brainhub.User{id: user_id}) do
+    employer? company_id, user_id
   end
 
   def employer?(company_id, user_id) do
@@ -35,8 +35,8 @@ defmodule Brainhub.Company do
     !!employment
   end
 
-  def management?(company, user) when is_map(company) and is_map(user) do
-    management? company.id, user.id
+  def management?(%Brainhub.Company{id: company_id}, %Brainhub.User{id: user_id}) do
+    management? company_id, user_id
   end
 
   def management?(company_id, user_id) do
@@ -47,7 +47,7 @@ defmodule Brainhub.Company do
     Enum.member? ["CEO", "CTO", "project manager"], role
   end
 
-  def employee_ids(company) when is_map(company), do: employee_ids company.id
+  def employee_ids(%Brainhub.Company{id: company_id}), do: employee_ids company_id
 
   def employee_ids(company_id) do
     Brainhub.Employment
@@ -56,7 +56,7 @@ defmodule Brainhub.Company do
     |> Repo.all
   end
 
-  def employees(company) when is_map(company), do: employees company.id
+  def employees(%Brainhub.Company{id: company_id}), do: employees company_id
 
   def employees(company_id) do
     Brainhub.User

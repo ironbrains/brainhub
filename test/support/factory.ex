@@ -41,4 +41,11 @@ defmodule Brainhub.Factory do
       project: build(:project)
     }
   end
+
+  def team_membership_factory do
+    %Brainhub.TeamMembership{
+      user: build(:user),
+      team: build(:team)
+    }
+  end
 end
