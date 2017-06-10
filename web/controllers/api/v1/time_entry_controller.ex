@@ -16,7 +16,7 @@ defmodule Brainhub.TimeEntryController do
 
   def index(conn, _params, user) do
     projects = Brainhub.Project.available_for(user)
-    today = Brainhub.TimeEntry.duration_for_date Brainhub.TimeEntry, Ecto.DateTime.utc
+    today = Brainhub.TimeEntry.duration_for user, Ecto.DateTime.utc
     render(conn, "index.json", projects: projects, today: today)
   end
 

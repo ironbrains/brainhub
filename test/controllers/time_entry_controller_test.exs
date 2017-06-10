@@ -3,7 +3,6 @@ defmodule Brainhub.TimeEntryControllerTest do
 
   alias Brainhub.AuthCase
 
-  import GoodTimes
   import GoodTimes.Convert
   import GoodTimes.Date
 
@@ -12,6 +11,13 @@ defmodule Brainhub.TimeEntryControllerTest do
     company = insert :company
     project = insert :project, company: company
     team = insert :team, project: project
+
+    {:ok, yesterday} = Calendar.DateTime.from_erl(yesterday() |> from_date, "Etc/UTC")
+    today = Ecto.DateTime.utc
+
+    insert :time_entry, start_at: yesterday, duration: 1000, user: user
+    insert :time_entry, start_at: today, duration: 2000
+    insert :time_entry, start_at: today, duration: 3000, user: user
 
     insert :employment, user: user, company: company
     AuthCase.sign_in(conn, user) |> AuthCase.merge({:ok, company: company, project: project, team: team})
@@ -29,16 +35,9 @@ defmodule Brainhub.TimeEntryControllerTest do
       assert Enum.empty?(json_response(conn, 200)["projects"])
     end
 
-    test "should show today work time", %{auth_conn: conn, user: user, project: project} do
-      {:ok, yesterday} = Calendar.DateTime.from_erl(yesterday() |> from_date, "Etc/UTC")
-      today = Calendar.DateTime.now_utc
-
-      insert :time_entry, start_at: yesterday, duration: 1000
-      insert :time_entry, start_at: today, duration: 1000
-      insert :time_entry, start_at: today, duration: 1000
-
+    test "should show today work time", %{auth_conn: conn} do
       conn = get conn, time_entry_path(conn, :index)
-      assert json_response(conn, 200)["today"] == 2000
+      assert json_response(conn, 200)["today"] == 3000
     end
   end
 end
