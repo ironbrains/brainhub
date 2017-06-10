@@ -48,4 +48,13 @@ defmodule Brainhub.Factory do
       team: build(:team)
     }
   end
+
+  def time_entry_factory do
+    %Brainhub.TimeEntry{
+      start_at: Calendar.DateTime.now_utc,
+      duration: 3600,
+      user: build(:user),
+      project: build(:project)
+    }
+  end
 end

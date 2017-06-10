@@ -1,13 +1,12 @@
 defmodule Brainhub.TimeEntryController do
   use Brainhub.Web, :controller
+  require Ecto.Date
 
   alias Brainhub.TimeEntry
   import Brainhub.Authentication
 
   plug Guardian.Plug.EnsureAuthenticated, handler: Brainhub.SessionController
   plug :current_user
-
-  alias Brainhub.Team
 
   def action(conn, _) do
     apply(__MODULE__, action_name(conn), [conn,
@@ -16,9 +15,9 @@ defmodule Brainhub.TimeEntryController do
   end
 
   def index(conn, _params, user) do
-    time_entries = Repo.all(TimeEntry)
-    projects = Repo.all Brainhub.Project
-    render(conn, "index.json", projects: projects, time_entries: time_entries)
+    projects = Brainhub.Project.available_for(user)
+    today = Brainhub.TimeEntry.duration_for_date Ecto.DateTime.utc
+    render(conn, "index.json", projects: projects, today: today)
   end
 
   def create(conn, %{"time_entry" => time_entry_params}, _user) do
