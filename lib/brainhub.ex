@@ -11,7 +11,7 @@ defmodule Brainhub do
       # Start the Ecto repository
       supervisor(Brainhub.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Brainhub.Endpoint, []),
+      supervisor(BrainhubWeb.Endpoint, []),
       # Start your own worker by calling: Brainhub.Worker.start_link(arg1, arg2, arg3)
       # worker(Brainhub.Worker, [arg1, arg2, arg3]),
     ]
@@ -25,7 +25,7 @@ defmodule Brainhub do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Brainhub.Endpoint.config_change(changed, removed)
+    BrainhubWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

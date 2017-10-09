@@ -1,8 +1,8 @@
-defmodule Brainhub.ProjectControllerTest do
-  use Brainhub.ConnCase
+defmodule BrainhubWeb.ProjectControllerTest do
+  use BrainhubWeb.ConnCase
 
-  alias Brainhub.Project
-  alias Brainhub.AuthCase
+  alias BrainhubWeb.Project
+  alias BrainhubWeb.AuthCase
 
   @valid_attrs %{name: "New Name", description: "New Description"}
   @invalid_attrs %{}

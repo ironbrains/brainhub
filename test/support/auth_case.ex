@@ -1,4 +1,4 @@
-defmodule Brainhub.AuthCase do
+defmodule BrainhubWeb.AuthCase do
   use Phoenix.ConnTest
 
   def sign_in(conn, user) do

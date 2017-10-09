@@ -1,7 +1,7 @@
-defmodule Brainhub.ProjectTest do
-  use Brainhub.ModelCase
+defmodule BrainhubWeb.ProjectTest do
+  use BrainhubWeb.ModelCase
 
-  alias Brainhub.Project
+  alias BrainhubWeb.Project
 
   @valid_attrs %{description: "some content", name: "some content"}
   @invalid_attrs %{}

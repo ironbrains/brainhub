@@ -1,7 +1,7 @@
-defmodule Brainhub.TimeEntryControllerTest do
-  use Brainhub.ConnCase
+defmodule BrainhubWeb.TimeEntryControllerTest do
+  use BrainhubWeb.ConnCase
 
-  alias Brainhub.AuthCase
+  alias BrainhubWeb.AuthCase
 
   import GoodTimes.Convert
   import GoodTimes.Date

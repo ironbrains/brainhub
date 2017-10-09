@@ -1,7 +1,7 @@
-defmodule Brainhub.CompanyTest do
-  use Brainhub.ModelCase
+defmodule BrainhubWeb.CompanyTest do
+  use BrainhubWeb.ModelCase
 
-  alias Brainhub.Company
+  alias BrainhubWeb.Company
 
   @valid_attrs %{name: "some content", web_site: "some content"}
   @invalid_attrs %{}

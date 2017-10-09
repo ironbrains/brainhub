@@ -10,10 +10,10 @@ config :brainhub,
   ecto_repos: [Brainhub.Repo]
 
 # Configures the endpoint
-config :brainhub, Brainhub.Endpoint,
+config :brainhub, BrainhubWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "hIGeXFB6V6FYA+pijz1M+vnG/tZ21GTbjctGRyO8cmZNKXcI3j2E00EVC6SrLWAZ",
-  render_errors: [view: Brainhub.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: BrainhubWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Brainhub.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

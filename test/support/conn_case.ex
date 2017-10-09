@@ -1,4 +1,4 @@
-defmodule Brainhub.ConnCase do
+defmodule BrainhubWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -25,11 +25,11 @@ defmodule Brainhub.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
-      import Brainhub.Router.Helpers
-      import Brainhub.Factory
+      import BrainhubWeb.Router.Helpers
+      import BrainhubWeb.Factory
 
       # The default endpoint for testing
-      @endpoint Brainhub.Endpoint
+      @endpoint BrainhubWeb.Endpoint
     end
   end
 

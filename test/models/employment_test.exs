@@ -1,7 +1,7 @@
-defmodule Brainhub.EmploymentTest do
-  use Brainhub.ModelCase
+defmodule BrainhubWeb.EmploymentTest do
+  use BrainhubWeb.ModelCase
 
-  alias Brainhub.Employment
+  alias BrainhubWeb.Employment
 
   @valid_attrs %{role: "developer", user_id: 1, company_id: 1, start_at: Calendar.DateTime.now_utc}
   @invalid_attrs %{}

@@ -1,5 +1,5 @@
-defmodule Brainhub.RegistrationControllerTest do
-  use Brainhub.ConnCase
+defmodule BrainhubWeb.RegistrationControllerTest do
+  use BrainhubWeb.ConnCase
 
   @valid_attrs %{
     first_name: "Red",

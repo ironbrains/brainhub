@@ -1,9 +1,9 @@
-defmodule Brainhub.TeamMembershipTest do
-  use Brainhub.ModelCase
+defmodule BrainhubWeb.TeamMembershipTest do
+  use BrainhubWeb.ModelCase
 
-  import Brainhub.Factory
+  import BrainhubWeb.Factory
 
-  alias Brainhub.TeamMembership
+  alias BrainhubWeb.TeamMembership
 
   @invalid_attrs %{}
 

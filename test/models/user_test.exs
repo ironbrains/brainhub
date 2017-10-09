@@ -1,7 +1,7 @@
-defmodule Brainhub.UserTest do
-  use Brainhub.ModelCase
+defmodule BrainhubWeb.UserTest do
+  use BrainhubWeb.ModelCase
 
-  alias Brainhub.User
+  alias BrainhubWeb.User
 
   import GoodTimes
   import GoodTimes.Convert
