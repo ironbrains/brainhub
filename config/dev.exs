@@ -6,24 +6,25 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :brainhub, Brainhub.Endpoint,
+config :brainhub, BrainhubWeb.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    node: ["node_modules/webpack/bin/webpack.js", "--watch", "--color"]
+    node: ["node_modules/webpack/bin/webpack.js", "--watch", "--color",
+          cd: Path.expand("../assets", __DIR__)]
   ]
 
 
 # Watch static and templates for browser reloading.
-config :brainhub, Brainhub.Endpoint,
+config :brainhub, BrainhubWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r{priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$},
       ~r{priv/gettext/.*(po)$},
-      ~r{web/views/.*(ex)$},
-      ~r{web/templates/.*(eex)$}
+      ~r{lib/brainhub_web/views/.*(ex)$},
+      ~r{lib/brainhub_web/templates/.*(eex)$}
     ]
   ]
 

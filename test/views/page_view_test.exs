@@ -1,3 +1,3 @@
-defmodule Brainhub.PageViewTest do
-  use Brainhub.ConnCase, async: true
+defmodule BrainhubWeb.PageViewTest do
+  use BrainhubWeb.ConnCase, async: true
 end

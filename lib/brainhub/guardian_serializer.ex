@@ -1,7 +1,8 @@
 defmodule Brainhub.GuardianSerializer do
   @behaviour Guardian.Serializer
 
-  alias Brainhub.{Repo, User}
+  alias Brainhub.Repo
+  alias BrainhubWeb.User
 
   def for_token(user = %User{}), do: { :ok, "User:#{user.id}" }
   def for_token(_), do: { :error, "Unknown resource type" }

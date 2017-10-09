@@ -1,8 +1,8 @@
-defmodule Brainhub.TeamControllerTest do
-  use Brainhub.ConnCase
+defmodule BrainhubWeb.TeamControllerTest do
+  use BrainhubWeb.ConnCase
 
-  alias Brainhub.Team
-  alias Brainhub.AuthCase
+  alias BrainhubWeb.Team
+  alias BrainhubWeb.AuthCase
 
   @valid_attrs %{name: "Team name", project_id: nil}
 

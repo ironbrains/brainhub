@@ -1,7 +1,7 @@
-defmodule Brainhub.UserControllerTest do
-  use Brainhub.ConnCase
+defmodule BrainhubWeb.UserControllerTest do
+  use BrainhubWeb.ConnCase
 
-  alias Brainhub.AuthCase
+  alias BrainhubWeb.AuthCase
 
   setup %{conn: conn} do
     user = insert :user

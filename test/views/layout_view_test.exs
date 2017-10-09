@@ -1,3 +1,3 @@
-defmodule Brainhub.LayoutViewTest do
-  use Brainhub.ConnCase, async: true
+defmodule BrainhubWeb.LayoutViewTest do
+  use BrainhubWeb.ConnCase, async: true
 end

@@ -1,7 +1,7 @@
-defmodule Brainhub.TeamTest do
-  use Brainhub.ModelCase
+defmodule BrainhubWeb.TeamTest do
+  use BrainhubWeb.ModelCase
 
-  alias Brainhub.Team
+  alias BrainhubWeb.Team
 
   @valid_attrs %{name: "Team Name", project_id: nil, user_id: nil}
   @invalid_attrs %{}

@@ -1,4 +1,4 @@
-defmodule Brainhub.ModelCase do
+defmodule BrainhubWeb.ModelCase do
   @moduledoc """
   This module defines the test case to be used by
   model tests.
@@ -21,8 +21,8 @@ defmodule Brainhub.ModelCase do
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Brainhub.ModelCase
-      import Brainhub.Factory
+      import BrainhubWeb.ModelCase
+      import BrainhubWeb.Factory
 
       @endpoint Brainhub.Endpoint
     end
@@ -62,7 +62,7 @@ defmodule Brainhub.ModelCase do
   """
   def errors_on(struct, data) do
     struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&Brainhub.ErrorHelpers.translate_error/1)
+    |> Ecto.Changeset.traverse_errors(&BrainhubWeb.ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

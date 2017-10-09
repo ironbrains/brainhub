@@ -1,7 +1,7 @@
-defmodule Brainhub.TimeEntryTest do
-  use Brainhub.ModelCase
+defmodule BrainhubWeb.TimeEntryTest do
+  use BrainhubWeb.ModelCase
 
-  alias Brainhub.TimeEntry
+  alias BrainhubWeb.TimeEntry
 
   import GoodTimes.Convert
   import GoodTimes.Date
@@ -44,7 +44,7 @@ defmodule Brainhub.TimeEntryTest do
   end
 
   describe "created_by/1" do
-    test "with Brainhub.User as param", %{user: user} do
+    test "with BrainhubWeb.User as param", %{user: user} do
       entries = TimeEntry.created_by user
       assert length(entries) == 2
     end
