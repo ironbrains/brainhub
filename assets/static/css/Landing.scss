@@ -1,0 +1,36 @@
+#promo-cover {
+  background: url(/images/stock.jpg);
+  background-size: cover;
+  min-height: calc(100vh - 4.5rem);
+
+  header {
+    .wrapper {
+      a#logo {
+        margin: 8px;
+        padding: 20px 24px;
+        background: rgba(2, 117, 216, 0.45);
+        color: #ffffff;
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.1;
+        display: inline-block;
+      }
+    }
+  }
+}
+
+.promo {
+  margin: 2rem 0.5rem;
+  max-width: 45rem
+}
+
+.promo-title {
+  margin: 10rem 0;
+  padding: 1rem 2rem;
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+
+  p {
+    font-size: 1.2rem;
+  }
+}
